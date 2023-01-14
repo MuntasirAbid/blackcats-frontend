@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Categories = () => {
     const [categories, setCategories] = useState([])
-    axios.get('http://localhost:10000/categories')
+    axios.get('https://resale-shop-server-flax.vercel.app/categories')
         .then(data => {
             setCategories(data.data)
         })

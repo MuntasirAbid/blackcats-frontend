@@ -9,7 +9,7 @@ const AddProduct = () => {
     const navigate = useNavigate()
     const { data: categories = [] } = useQuery({
         queryKey: ['categories'],
-        queryFn: () => fetch('http://localhost:10000/bookGenre')
+        queryFn: () => fetch('https://resale-shop-server-flax.vercel.app/bookGenre')
             .then(res => res.json())
     })
     const handleSubmit = (e) => {
@@ -45,7 +45,7 @@ const AddProduct = () => {
                 console.log(data)
                 const img = data?.data?.display_url;
                 const product = { name, author, status, summery, resalePrice, originalPrice, yearOfPurchase, yearOfUse, sellerEmail, sellerName, sellerPhone, img, condition, location, genre }
-                fetch('http://localhost:10000/books', {
+                fetch('https://resale-shop-server-flax.vercel.app/books', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",

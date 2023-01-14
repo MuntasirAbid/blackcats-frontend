@@ -82,7 +82,7 @@ const Register = () => {
 
     const saveUser = (name, email, photo, role) => {
         const user = { name, email, photo, role }
-        fetch("http://localhost:10000/users", {
+        fetch("https://resale-shop-server-flax.vercel.app/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

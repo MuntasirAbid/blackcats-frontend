@@ -5,7 +5,7 @@ const useToken = email => {
 
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:10000/jwt?email=${email}`)
+            fetch(`https://resale-shop-server-flax.vercel.app/jwt?email=${email}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.bookToken) {
