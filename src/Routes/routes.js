@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import BigLoading from "../Components/Loading/BigLoading";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import Main from "../Layouts/Main";
 import Login from "../Pages/Authentication/Login";

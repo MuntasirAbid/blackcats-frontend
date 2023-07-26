@@ -10,15 +10,15 @@ import SellerNav from '../Seller/SellerNav/SellerNav';
 const Sidebar = () => {
     const { user, logout } = useContext(AuthContext)
     // const [Seller,setSeller]=useState(false)
-    const [isSeller]=useSeller(user?.email)
-    const [isAdmin]=useAdmin(user?.email)
+    const [isSeller] = useSeller(user?.email)
+    const [isAdmin] = useAdmin(user?.email)
     // console.log(isSeller)
     return (
         <div>
             {/* Branding & Profile Info */}
-            <div className=''> 
+            <div className=''>
                 <h2 className='text-3xl cursor-pointer font-semibold text-center text-primary '>
-                    <Link to='/'>BookRestore</Link>
+                    <Link to='/'>Buy & Sell</Link>
                 </h2>
                 <div className='flex flex-col items-center mt-6 -mx-2'>
                     <Link to='/dashboard'>
@@ -45,15 +45,15 @@ const Sidebar = () => {
             {/* Nav Items */}
             <div className='flex flex-col justify-between flex-1 mt-6'>
                 <nav>
-                   {
-                    isSeller && !isAdmin && <SellerNav></SellerNav>
-                   }
-                   {
-                    isAdmin && !isSeller && <AdminNav></AdminNav>
-                   }
-                   {
-                    !isAdmin && !isSeller && <BuyerNav></BuyerNav>
-                   }
+                    {
+                        isSeller && !isAdmin && <SellerNav></SellerNav>
+                    }
+                    {
+                        isAdmin && !isSeller && <AdminNav></AdminNav>
+                    }
+                    {
+                        !isAdmin && !isSeller && <BuyerNav></BuyerNav>
+                    }
                 </nav>
             </div>
         </div>

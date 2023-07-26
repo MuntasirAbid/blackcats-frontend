@@ -15,8 +15,7 @@ const AddProduct = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
-        const name = form.book.value;
-        const author = form.author.value;
+        const name = form.product.value;
         const summery = form.des.value;
         const resalePrice = form.resalePrice.value;
         const originalPrice = form.originalPrice.value;
@@ -44,7 +43,7 @@ const AddProduct = () => {
             .then(data => {
                 console.log(data)
                 const img = data?.data?.display_url;
-                const product = { name, author, status, summery, resalePrice, originalPrice, yearOfPurchase, yearOfUse, sellerEmail, sellerName, sellerPhone, img, condition, location, genre }
+                const product = { name, status, summery, resalePrice, originalPrice, yearOfPurchase, yearOfUse, sellerEmail, sellerName, sellerPhone, img, condition, location, genre }
                 fetch('https://resale-shop-server-flax.vercel.app/books', {
                     method: "POST",
                     headers: {
@@ -71,21 +70,15 @@ const AddProduct = () => {
 
             <h2 className='text-4xl font-semibold my-10 text-center'>Add A Product</h2>
             <form onSubmit={handleSubmit} className='md:w-1/2 mx-auto py-10 px-5 md:p-10 rounded-3xl shadow-md'>
-                <div className='flex gap-10'>
+                <div className=''>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="text-base">Book Name</span>
+                            <span className="text-base">Product Name</span>
                         </label>
-                        <input type="text" name='book' placeholder="Type here" className="input input-bordered w-full " required />
+                        <input type="text" name='product' placeholder="Type here" className="input input-bordered w-full " required />
 
                     </div>
-                    <div className="form-control w-full max-w-xs ">
-                        <label className="label">
-                            <span className="text-base">Author's Name</span>
-                        </label>
-                        <input type="text" name='author' placeholder="Type here" className="input input-bordered w-full" required />
 
-                    </div>
                 </div>
                 <div className="flex gap-28">
                     <div className="form-control w-full max-w-xs ">
@@ -113,7 +106,7 @@ const AddProduct = () => {
                 </div>
                 <div className="form-control w-full ">
                     <label className="label">
-                        <span className="text-base">Book's Photo</span>
+                        <span className="text-base">Product's Photo</span>
                     </label>
                     <input type="file" name="photo" className="file-input file-input-bordered w-full max-w-xs" required />
                 </div>
@@ -121,11 +114,11 @@ const AddProduct = () => {
                 <div className='flex gap-28'>
                     <div>
                         <label className="label">
-                            <span className="text-base">Genre</span>
+                            <span className="text-base">Category</span>
                         </label>
                         <select name='genre' className="select select-bordered w-full" required>
                             {
-                                categories.map(category => <option value={category.genre} key={category._id}>{category.genre}</option>)
+                                categories.map(c => <option value={c.genre} key={c._id}>{c.genre}</option>)
 
                             }
                         </select>

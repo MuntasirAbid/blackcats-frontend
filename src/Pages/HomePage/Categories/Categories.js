@@ -1,20 +1,35 @@
-import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react';
 import Category from './Category';
-import axios from 'axios';
+import BigLoading from '../../../Components/Loading/BigLoading';
 
 const Categories = () => {
     const [categories, setCategories] = useState([])
-    axios.get('https://resale-shop-server-flax.vercel.app/categories')
-        .then(data => {
-            setCategories(data.data)
-        })
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+
+        fetch('https://resale-shop-server-flax.vercel.app/categories')
+            .then(response => response.json())
+            .then(data => {
+                setCategories(data)
+                setLoading(false);
+
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
+    if (loading) {
+        return <BigLoading></BigLoading>
+    }
 
     return (
         <div>
-            <h2 className='text-primary text-4xl font-semibold text-center my-16'>Choose Your Own Genre</h2>
+            <h2 className='text-primary text-4xl font-semibold text-center my-16'>Choose Your Own Category</h2>
             <div className='grid grid-cols-1  lg:grid-cols-3 gap-10'>
                 {
+
                     categories.map(category => <Category key={category._id} category={category}></Category>)
 
                 }

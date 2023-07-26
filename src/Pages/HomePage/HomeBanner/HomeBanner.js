@@ -1,9 +1,9 @@
 import React from 'react';
-import bookPeople from '../../../assets/homeBanner.jpg';
+import banner from '../../../assets/homeBanner.avif';
 const HomeBanner = () => {
     return (
         <div  >
-            <img className='rounded-2xl' src={bookPeople} alt="" />
+            <img className='m-auto' src={banner} alt="" />
         </div>
     );
 };

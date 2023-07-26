@@ -24,20 +24,20 @@ const Header = () => {
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
-          <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
             </label>
 
-                  {/* logo */}
+            {/* logo */}
 
             <Link to="/">
               <div className='flex items-center'>
                 <img src="{logo}" className="w-12 rounded-full" alt="" />
-                <h2 className='text-2xl ml-2 font-bold text-primary  hover:text-indigo-600'>BookRestore!</h2>
+                <h2 className='text-2xl ml-2 font-bold text-primary  hover:text-indigo-600'>Buy&Sell Store!</h2>
               </div>
             </Link>
 
-                  {/* header */}
+            {/* header */}
 
             <div className="md:hidden">
               <button
@@ -89,7 +89,7 @@ const Header = () => {
               <li className="text-primary font-semibold text-xl hover:text-indigo-400">
                 <Link to="/blog">Blog</Link>
               </li>
-              
+
               {user?.uid ?
 
                 <>
