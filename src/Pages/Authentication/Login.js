@@ -17,6 +17,7 @@ const Login = () => {
     const [token] = useToken(loginEmail)
     const navigate = useNavigate()
     const location = useLocation()
+
     const from = location.state?.from?.pathname || '/'
 
     useEffect(() => {
@@ -25,27 +26,24 @@ const Login = () => {
         }
     }, [token, from, navigate]);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (data) => {
 
-        e.preventDefault()
-        const form = e.target;
+        data.preventDefault()
+        const form = data.target;
         const email = form.email.value;
-        const password = form.password.value
-
+        const password = form.password.value;
 
         logIn(email, password)
-            .then(res => {
-                const user = res.user;
-                console.log(user)
-                // setError("")
-                // console.log(from)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setLoginEmail(email);
 
-                // console.log(user.email)
-                setLoginEmail(user.email)
-            }).catch(er => {
-                console.error(er)
-                setError(er.message)
-                console.log(error)
+            })
+            .catch(error => {
+                console.log(error.message)
+                setError(error.message);
+
             })
 
     }
@@ -60,7 +58,7 @@ const Login = () => {
 
         if (!userEmail) {
             toast.error('Please enter your email first!')
-            return
+            return;
         }
 
         sendPasswordResetEmail(auth, userEmail)
@@ -96,9 +94,9 @@ const Login = () => {
                     </div>
                     <p className='text-xl text-red-500 py-3'>{error}</p>
                     <div className='pb-2'>
-                        <button onClick={handleReset} className='text-xs hover:underline text-gray-400'>
+                        <Link onClick={handleReset} className='text-xs hover:underline text-gray-400'>
                             Forgot Password?
-                        </button>
+                        </Link>
                     </div>
                     <button type="submit" className="text-white bg-indigo-500 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 

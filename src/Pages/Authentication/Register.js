@@ -11,6 +11,9 @@ const Register = () => {
     const navigate = useNavigate()
 
 
+    if (token) {
+        navigate('/')
+    }
     // handle submit
 
     const handleSubmit = (e) => {
