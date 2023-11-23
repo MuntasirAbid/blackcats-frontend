@@ -6,7 +6,7 @@ import NoElements from '../../NoElements/NoElements';
 const AllBuyers = () => {
     const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ['buyers'],
-        queryFn: () => fetch('https://resale-shop-server-flax.vercel.app/buyers', {
+        queryFn: () => fetch('http://localhost:10000/buyers', {
             headers: {
 
                 authorization: `bearer ${localStorage.getItem("bookToken")}`
@@ -19,7 +19,7 @@ const AllBuyers = () => {
 
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`https://resale-shop-server-flax.vercel.app/buyers/${id}`, {
+        fetch(`http://localhost:10000/buyers/${id}`, {
             method: "DELETE",
             headers: {
 
@@ -33,6 +33,7 @@ const AllBuyers = () => {
                 refetch()
             })
     }
+
 
 
     if (isLoading || buyers.length === 0) {
@@ -49,7 +50,6 @@ const AllBuyers = () => {
                         </th>
                         <th>Name</th>
                         <th>Email Address</th>
-                        {/* <th>Verify</th> */}
                         <th>Delete</th>
                         <th></th>
                     </tr>
@@ -57,15 +57,12 @@ const AllBuyers = () => {
                 <tbody>
 
                     {
-                        buyers.map((buyer, i) => <tr key={buyer._id}>
+                        buyers.length && buyers.map((buyer, i) => <tr key={buyer._id}>
                             <th>
                                 {i + 1}
                             </th>
                             <td>{buyer.name}</td>
                             <td>{buyer.email}</td>
-                            {/* <td>
-                                <button className="btn btn-accent " onClick={() => handleVerify(buyer._id)}>Verify</button>
-                            </td> */}
                             <td>
                                 <button className="btn btn-accent " onClick={() => handleDelete(buyer._id)}>Delete</button>
                             </td>
@@ -73,10 +70,7 @@ const AllBuyers = () => {
                         </tr>)
                     }
 
-
                 </tbody>
-
-
 
             </table>
         </div>

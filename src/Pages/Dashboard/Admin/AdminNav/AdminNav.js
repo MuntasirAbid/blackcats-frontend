@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaHandHoldingUsd, FaHandHoldingHeart } from 'react-icons/fa';
-import { MdOutlineReportGmailerrorred, MdReport } from "react-icons/md";
+import { MdReport } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 const AdminNav = () => {
@@ -14,7 +14,7 @@ const AdminNav = () => {
                     <Link to="/dashboard/all-buyer"><FaHandHoldingHeart></FaHandHoldingHeart>All Buyers</Link>
                 </li>
                 <li className=" font-semibold text-lg">
-                    <Link to="/dashboard/reported-items"><MdReport></MdReport>Reported Books</Link>
+                    <Link to="/dashboard/reported-items"><MdReport></MdReport>Reported Items</Link>
                 </li>
 
 

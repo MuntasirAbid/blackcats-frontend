@@ -16,7 +16,7 @@ const CheckoutForm = ({ booking }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("https://resale-shop-server-flax.vercel.app/create-payment-intent", {
+        fetch("http://localhost:10000/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -33,7 +33,7 @@ const CheckoutForm = ({ booking }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("https://resale-shop-server-flax.vercel.app/create-payment-intent", {
+        fetch("http://localhost:10000/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -107,7 +107,7 @@ const CheckoutForm = ({ booking }) => {
                 sellerEmail: sellerEmail,
                 bookingId: booking._id
             }
-            fetch('https://resale-shop-server-flax.vercel.app/payments', {
+            fetch('http://localhost:10000/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

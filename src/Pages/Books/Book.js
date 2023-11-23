@@ -7,7 +7,7 @@ const Book = ({ book, setModalBook }) => {
 
     const handleReport = (id) => {
         console.log(id)
-        fetch(`https://resale-shop-server-flax.vercel.app/books/report/${id}`, {
+        fetch(`http://localhost:10000/books/report/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": 'application/json',
@@ -23,8 +23,8 @@ const Book = ({ book, setModalBook }) => {
     // console.log(book)
     const { name, author, img, originalPrice, resalePrice, location, verify, post, sellerName, summery, yearOfUse, yearOfPurchase } = book
     return (
-        <div className="card rounded-none bg-base-100 ">
-            <figure><img src={img} className='h-96 w-full' alt="Shoes" /></figure>
+        <div className="card rounded-none bg-base-100">
+            <figure><img src={img} className='h-72 w-96' alt="Shoes" /></figure>
             <div className="card-body px-0">
                 <div className='flex justify-between'>
                     <div>

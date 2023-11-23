@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
     }
     const logOut = () => {
         setLoading(true)
+        localStorage.removeItem('bookToken')
         return signOut(auth)
     }
 

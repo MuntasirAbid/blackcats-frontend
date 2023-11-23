@@ -9,7 +9,7 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext)
     const { data: myBookings = [], refetch, isLoading } = useQuery({
         queryKey: ['myBookings'],
-        queryFn: () => fetch(`https://resale-shop-server-flax.vercel.app/bookings/${user?.email}`, {
+        queryFn: () => fetch(`http://localhost:10000/bookings/${user?.email}`, {
             headers: {
 
                 authorization: `bearer ${localStorage.getItem("bookToken")}`

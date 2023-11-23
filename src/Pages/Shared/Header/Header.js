@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
+import logo from '../../../assets/blackCat.jpeg'
 
 
 const Header = () => {
@@ -14,13 +15,10 @@ const Header = () => {
       .catch(er => console.error(er))
   }
 
-
   const [navbar, setNavbar] = useState(false);
 
-
-
   return (
-    <nav className='w-full   bg-white ' >
+    <nav className='w-full bg-black ' >
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -32,8 +30,8 @@ const Header = () => {
 
             <Link to="/">
               <div className='flex items-center'>
-                <img src="{logo}" className="w-12 rounded-full" alt="" />
-                <h2 className='text-2xl ml-2 font-bold text-primary  hover:text-indigo-600'>Buy&Sell Store!</h2>
+                <img src={logo} className="w-12 rounded-full" alt="" />
+                <h2 className='text-2xl ml-2 font-bold font-serif text-white  hover:text-red-600'>BLACK CATS</h2>
               </div>
             </Link>
 
@@ -83,23 +81,23 @@ const Header = () => {
               }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-primary font-semibold text-xl hover:text-indigo-400">
+              <li className="text-white font-semibold text-lg hover:text-red-600">
                 <Link to="/">Home</Link>
               </li>
-              <li className="text-primary font-semibold text-xl hover:text-indigo-400">
+              <li className="text-white font-semibold text-lg hover:text-red-600">
                 <Link to="/blog">Blog</Link>
               </li>
 
               {user?.uid ?
 
                 <>
-                  <li className="text-primary font-semibold text-xl hover:text-indigo-400">
+                  <li className="text-white font-semibold text-lg hover:text-red-600">
                     <Link onClick={handleLogOut} >Log Out</Link>
                   </li>
-                  <li className="text-primary font-semibold text-xl hover:text-indigo-400">
+                  <li className="text-white font-semibold text-lg hover:text-red-600">
                     <Link to='/dashboard' >Dashboard</Link>
                   </li>
-                  <li className="text-primary font-semibold text-xl hover:text-indigo-400">
+                  <li className="text-white font-semibold text-lg hover:text-red-600">
                     <Link >
                       <div className="tooltip tooltip-bottom" data-tip={user?.displayName ? user?.displayName : "User"}>
                         <button ><img className='rounded-full w-10' src={user?.photoURL ? user?.photoURL : <FaUserCircle></FaUserCircle>} alt="" /></button>
@@ -109,26 +107,22 @@ const Header = () => {
                 </>
                 :
                 <>
-                  <li className="text-primary font-semibold text-xl hover:text-indigo-400">
+                  <li className="text-white font-semibold text-xl hover:text-red-600">
                     <Link to="/login">Log In</Link>
                   </li>
-                  <li className="text-primary font-semibold text-xl hover:text-indigo-400">
+                  <li className="text-white font-semibold text-xl hover:text-red-600">
                     <Link to="/register">Sign Up</Link>
                   </li>
                 </>
 
               }
 
-
             </ul>
-
-
           </div>
 
         </div>
 
       </div>
-
 
     </nav>
   );

@@ -20,7 +20,7 @@ const Booking = ({ book, setModalBook }) => {
         const booking = { location, sellerName, phone, img, status, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: resalePrice }
 
 
-        fetch("https://resale-shop-server-flax.vercel.app/bookings", {
+        fetch("http://localhost:10000/bookings", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

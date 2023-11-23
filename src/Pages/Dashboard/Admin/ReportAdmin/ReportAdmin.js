@@ -8,7 +8,7 @@ const ReportAdmin = () => {
 
     const { data: reportedItems = [], refetch, isLoading } = useQuery({
         queryKey: ['reportedItems'],
-        queryFn: () => fetch('https://resale-shop-server-flax.vercel.app/books/reported', {
+        queryFn: () => fetch('http://localhost:10000/products/reported', {
             headers: {
 
                 authorization: `bearer ${localStorage.getItem("bookToken")}`
@@ -19,7 +19,7 @@ const ReportAdmin = () => {
 
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`https://resale-shop-server-flax.vercel.app/books/reported/${id}`, {
+        fetch(`http://localhost:10000/products/reported/${id}`, {
             method: "DELETE",
             headers: {
 
