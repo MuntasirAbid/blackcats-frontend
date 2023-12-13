@@ -19,6 +19,7 @@ import Home from "../Pages/HomePage/Home/Home";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
+import ContactUs from "../Pages/HomePage/ContactUs/ContactUs";
 
 export const router = createBrowserRouter([
     {
@@ -43,8 +44,13 @@ export const router = createBrowserRouter([
                 element: <Blog></Blog>
             },
             {
+                path: "/contactUs",
+                element: <ContactUs></ContactUs>
+            },
+
+            {
                 path: "/categories/:name",
-                element: <PrivateRoute><Books></Books></PrivateRoute>,
+                element: <Books></Books>,
                 loader: ({ params }) => fetch(`http://localhost:10000/categories/${params.name}`)
             },
         ],

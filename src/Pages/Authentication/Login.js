@@ -100,7 +100,7 @@ const Login = () => {
                     </div>
                     <button type="submit" className="text-white bg-indigo-500 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 
-                    <p className='text-center my-5'><span>New To BookRestore ?</span> <Link className='text-orange-400' to="/register">Sign Up</Link></p>
+                    <p className='text-center my-5'><span>New To Black Cats?</span> <Link className='text-orange-400' to="/register">Sign Up</Link></p>
                 </form>
             </div>
 

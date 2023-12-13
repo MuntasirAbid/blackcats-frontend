@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import useAdmin from '../../../Hooks/useAdmin';
@@ -8,16 +8,16 @@ import BuyerNav from '../Buyer/BuyerNav/BuyerNav';
 import SellerNav from '../Seller/SellerNav/SellerNav';
 
 const Sidebar = () => {
-    const { user, logout } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     // const [Seller,setSeller]=useState(false)
     const [isSeller] = useSeller(user?.email)
     const [isAdmin] = useAdmin(user?.email)
     // console.log(isSeller)
     return (
-        <div>
+        <div className='lg:bg-white md:bg-gray-300 bg-gray-300 rounded-sm'>
             {/* Branding & Profile Info */}
             <div className=''>
-                <h2 className='text-3xl cursor-pointer font-semibold text-center text-primary '>
+                <h2 className='text-3xl cursor-pointer font-semibold text-center text-red-800 '>
                     <Link to='/'>Buy & Sell</Link>
                 </h2>
                 <div className='flex flex-col items-center mt-6 -mx-2'>

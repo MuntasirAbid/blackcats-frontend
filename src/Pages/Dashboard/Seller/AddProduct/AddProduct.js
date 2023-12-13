@@ -44,7 +44,7 @@ const AddProduct = () => {
                 console.log(data)
                 const img = data?.data?.display_url;
                 const product = { name, status, summery, resalePrice, originalPrice, yearOfPurchase, yearOfUse, sellerEmail, sellerName, sellerPhone, img, condition, location, genre }
-                fetch('http://localhost:10000/books', {
+                fetch('http://localhost:10000/products', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",
@@ -69,7 +69,7 @@ const AddProduct = () => {
         <div>
 
             <h2 className='text-4xl font-semibold my-10 text-center'>Add A Product</h2>
-            <form onSubmit={handleSubmit} className='md:w-1/2 mx-auto py-10 px-5 md:p-10 rounded-3xl shadow-md'>
+            <form onSubmit={handleSubmit} className='md:w-1/2 mx-auto my-10 px-5 md:p-10 rounded-3xl shadow-md'>
                 <div className=''>
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
@@ -169,7 +169,7 @@ const AddProduct = () => {
                     </div>
                 </div>
                 <div className='flex justify-center  my-10'>
-                    <button type="submit" className='btn px-24 '>Add</button>
+                    <button type="submit" className='btn px-24 '>Add Product</button>
                 </div>
             </form>
         </div>

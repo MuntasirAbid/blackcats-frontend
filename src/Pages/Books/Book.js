@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { FaCheckCircle } from 'react-icons/fa';
 import Booking from './Booking';
+import { AuthContext } from '../../Contexts/AuthProvider';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Book = ({ book, setModalBook }) => {
 
+    const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const locations = useLocation()
+
     const handleReport = (id) => {
         console.log(id)
-        fetch(`http://localhost:10000/books/report/${id}`, {
+        fetch(`http://localhost:10000/products/report/${id}`, {
             method: "PUT",
             headers: {
                 "content-type": 'application/json',
@@ -20,6 +26,17 @@ const Book = ({ book, setModalBook }) => {
                 toast.success("Reported Successfully !")
             })
     }
+
+    const handleBuyNow = () => {
+        if (user) {
+            setModalBook(book);
+        } else {
+            // Use navigate function to redirect to login page
+            navigate('/login', { state: { from: locations } });
+        }
+    };
+
+
     // console.log(book)
     const { name, author, img, originalPrice, resalePrice, location, verify, post, sellerName, summery, yearOfUse, yearOfPurchase } = book
     return (
@@ -58,7 +75,7 @@ const Book = ({ book, setModalBook }) => {
 
                     <div className="flex gap-6">
                         <label htmlFor="book" className="btn btn-primary " onClick={() => handleReport(book._id)}>Report</label>
-                        <label htmlFor="book" className="btn btn-primary " onClick={() => setModalBook(book)}>Buy Now</label>
+                        <label htmlFor="book" className="btn btn-primary " onClick={handleBuyNow}>Proceed to checkout</label>
                     </div>
                 </div>
             </div>

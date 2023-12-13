@@ -26,7 +26,7 @@ const Categories = () => {
 
     return (
         <div>
-            <h2 className='text-primary text-4xl font-semibold text-center my-16'>Choose Your Own Category</h2>
+            <h2 className='text-black-600 text-4xl font-semibold text-center mb-16'>Choose your category</h2>
             <div className='grid grid-cols-1  lg:grid-cols-3 gap-10'>
                 {
 

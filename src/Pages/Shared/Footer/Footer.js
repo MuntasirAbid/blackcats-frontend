@@ -5,14 +5,14 @@ const Footer = () => {
     return (
         <footer className="footer footer-center p-10 mt-24 text-base-content rounded">
             <div className="grid grid-flow-col gap-4">
-                
-                    <li className="text-primary  font-semibold text-xl hover:text-gray-500">
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li className="text-primary font-semibold text-xl  hover:text-gray-500">
-                        <Link to="/blog">Blog</Link>
-                    </li>
-                
+
+                <li className="text-primary  font-semibold text-xl hover:text-gray-500">
+                    <Link to="/">Home</Link>
+                </li>
+                <li className="text-primary font-semibold text-xl  hover:text-gray-500">
+                    <Link to="/blog">FAQ</Link>
+                </li>
+
             </div>
             <div>
                 <div className="grid grid-flow-col gap-4">
@@ -22,7 +22,7 @@ const Footer = () => {
                 </div>
             </div>
             <div>
-                <p>Copyright © 2022 - All right reserved by ACME Industries Ltd</p>
+                <p>Copyright © 2023 - All right reserved by Muntasir Al Abid</p>
             </div>
         </footer>
     );
