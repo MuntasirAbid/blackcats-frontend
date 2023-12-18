@@ -13,7 +13,7 @@ const AdvertiseItems = () => {
         return (
             <div>
                 <h2 className=' text-primary text-4xl font-semibold text-center my-16'>Ours Collection</h2>
-                <div className='grid grid-cols-1  lg:grid-cols-3 gap-20'>
+                <div className='grid grid-cols-1  lg:grid-cols-4 md:grid-cols-3 gap-16'>
                     {
                         advertiseItems.map(advertiseItem => <AdvertiseItem key={advertiseItem._id} advertiseItem={advertiseItem}></AdvertiseItem>)
                     }

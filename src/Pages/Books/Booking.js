@@ -51,7 +51,7 @@ const Booking = ({ book, setModalBook }) => {
                         <div className='flex gap-10'>
                             <div className="form-control w-full max-w-xs">
                                 <label className="label">
-                                    <span className="text-base">Book Name</span>
+                                    <span className="text-base">Product Name</span>
                                 </label>
                                 <input type="text" placeholder="Type here" disabled defaultValue={book.name} className="input input-bordered w-full " />
 

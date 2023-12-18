@@ -20,6 +20,7 @@ import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
 import ContactUs from "../Pages/HomePage/ContactUs/ContactUs";
+import ProductDetails from "../Pages/Books/ProductDetails";
 
 export const router = createBrowserRouter([
     {
@@ -52,6 +53,11 @@ export const router = createBrowserRouter([
                 path: "/categories/:name",
                 element: <Books></Books>,
                 loader: ({ params }) => fetch(`http://localhost:10000/categories/${params.name}`)
+            },
+            {
+                path: "/product/:productId",
+                element: <ProductDetails></ProductDetails>,
+                loader: ({ params }) => fetch(`http://localhost:10000/product/${params.productId}`)
             },
         ],
 

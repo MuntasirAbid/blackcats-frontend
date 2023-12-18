@@ -46,7 +46,7 @@ const MyBuyers = () => {
                     <tbody>
 
                         {
-                            myBuyers.map((myBuyer, i) => <tr key={myBuyer._id}>
+                            myBuyers.length && myBuyers?.map((myBuyer, i) => <tr key={myBuyer._id}>
                                 <th>
                                     {i + 1}
                                 </th>

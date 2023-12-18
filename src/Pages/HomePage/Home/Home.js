@@ -14,21 +14,32 @@ const Home = () => {
     })
     if (books.length <= 0) {
         return (
-            <div className='md:w-3/4 mx-auto space-y-10'>
-                <HomeBanner></HomeBanner>
-                <Categories></Categories>
-                <AboutUs></AboutUs>
+            <div>
+                <div className=''>
+                    <HomeBanner></HomeBanner>
+                </div>
+                <div className='mx-14  space-y-10'>
 
+                    <Categories></Categories>
+                    <AdvertiseItems></AdvertiseItems>
+                    <AboutUs></AboutUs>
+
+                </div>
             </div>
         )
     }
     return (
-        <div className='md:w-3/4 mx-auto space-y-10'>
-            <HomeBanner></HomeBanner>
-            <Categories></Categories>
-            <AdvertiseItems></AdvertiseItems>
-            <AboutUs></AboutUs>
+        <div>
+            <div className=''>
+                <HomeBanner></HomeBanner>
+            </div>
+            <div className='mx-14  space-y-10'>
 
+                <Categories></Categories>
+                <AdvertiseItems></AdvertiseItems>
+                <AboutUs></AboutUs>
+
+            </div>
         </div>
     );
 };

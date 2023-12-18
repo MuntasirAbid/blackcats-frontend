@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import useToken from '../../Hooks/useToken';
+import toast from 'react-hot-toast';
 
 const Register = () => {
     const { user, createUser, updateUser, googleLogin } = useContext(AuthContext)
@@ -54,7 +55,7 @@ const Register = () => {
                         }
                         updateUser(profile)
                             .then(() => {
-                                alert("Update")
+                                toast.success('Welcome to Black Cats! Enjoy shopping')
 
                                 saveUser(name, email, photo, role)
                             })

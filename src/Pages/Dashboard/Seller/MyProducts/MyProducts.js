@@ -80,7 +80,7 @@ const MyProducts = () => {
                     <tbody>
 
                         {
-                            myProducts.map((myProduct, i) => <tr key={myProduct._id}>
+                            myProducts.length && myProducts.map((myProduct, i) => <tr key={myProduct._id}>
                                 <th>
                                     {i + 1}
                                 </th>
@@ -92,7 +92,8 @@ const MyProducts = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            <div className="font-bold">{myProduct.name}</div>
+                                            {/* <small className='text-gray-500 text-sm'>{post.slice(0, 15)}</small> */}
+                                            <div className="font-bold">{myProduct.name.slice(0, 55)}</div>
                                             <div className="text-sm opacity-50">By {myProduct.author}</div>
                                         </div>
                                     </div>

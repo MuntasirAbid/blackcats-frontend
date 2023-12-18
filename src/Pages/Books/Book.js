@@ -11,6 +11,8 @@ const Book = ({ book, setModalBook }) => {
     const navigate = useNavigate()
     const locations = useLocation()
 
+
+
     const handleReport = (id) => {
         console.log(id)
         fetch(`http://localhost:10000/products/report/${id}`, {
@@ -31,17 +33,17 @@ const Book = ({ book, setModalBook }) => {
         if (user) {
             setModalBook(book);
         } else {
-            // Use navigate function to redirect to login page
+
             navigate('/login', { state: { from: locations } });
         }
     };
 
-
     // console.log(book)
     const { name, author, img, originalPrice, resalePrice, location, verify, post, sellerName, summery, yearOfUse, yearOfPurchase } = book
+
     return (
-        <div className="card rounded-none bg-base-100">
-            <figure><img src={img} className='h-72 w-96' alt="Shoes" /></figure>
+        <div className="card rounded-none bg-base-100 ">
+            <figure><img src={img} className='' alt="Shoes" /></figure>
             <div className="card-body px-0">
                 <div className='flex justify-between'>
                     <div>

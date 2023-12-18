@@ -2,21 +2,29 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AdvertiseItem = ({ advertiseItem }) => {
-    const { name,img,resalePrice,originalPrice,author,summery } = advertiseItem
+    const { _id, name, img, resalePrice, originalPrice, location, post, author, summery } = advertiseItem
+    console.log(advertiseItem);
     return (
-        <div className="card  bg-base-100 shadow-xl">
-            <figure className="px-10 pt-10">
-                <img src={img}  alt="Shoes" className="rounded-xl h-48" />
-            </figure>
-            <div className="card-body items-center text-center">
-            <div>
-                        <h2 className="card-title font-bold ">{name}</h2>
+
+        <Link to={`/product/${_id}`}>
+
+            <div className="card  bg-base-100 drop-shadow-md max-w-[489px] max-h-[713px]">
+                <figure className="">
+                    <img src={img} alt="" className=" w-[389px] h-[389px] " />
+                </figure>
+                <div className="card-body items-center text-center">
+                    <div>
+                        <h2 className="card-title font-bold ">{`${name.slice(0, 19)}...`}</h2>
                         <small className='text-base text-gray-500'>{author}</small>
                     </div>
-                <p>{`${summery.slice(0,150)} Read More...`}</p>
-              
+                    <p>Posted on: {`${post.slice(0, 34)}..`}</p>
+                    <p>Location: {location}</p>
+                    <p className='font-bold text-gray-600'>{`$${resalePrice}`}</p>
+
+                </div>
             </div>
-        </div>
+
+        </Link>
     );
 };
 
