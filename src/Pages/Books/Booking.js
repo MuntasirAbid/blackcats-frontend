@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
@@ -7,6 +7,24 @@ const Booking = ({ book, setModalBook }) => {
 
     const { name, author, img, originalPrice, resalePrice, status, location, post, sellerName, summery, yearOfUse, yearOfPurchase, sellerEmail } = book
 
+    const [quantity, setQuantity] = useState('');
+    const [totalPrice, setTotalPrice] = useState(resalePrice);
+    const [quantityError, setQuantityError] = useState()
+    const [formValid, setFormValid] = useState(true)
+
+    const handleQuantityChange = (event) => {
+        const newQuantity = event.target.value;
+        setQuantity(newQuantity);
+
+        if (newQuantity <= 0) {
+            setQuantityError("Quantity cannot be less then 1")
+            setFormValid(false)
+        } else {
+            setTotalPrice(newQuantity * resalePrice);
+            setQuantityError('');
+            setFormValid(true);
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -14,10 +32,11 @@ const Booking = ({ book, setModalBook }) => {
         const form = e.target;
         const location = form.place.value;
         const phone = form.phone.value;
+        const quantity = form.quantity.value;
         const buyerName = user.displayName;
 
 
-        const booking = { location, sellerName, phone, img, status, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: resalePrice }
+        const booking = { location, sellerName, phone, quantity, img, status, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: totalPrice }
 
 
         fetch("http://localhost:10000/bookings", {
@@ -58,11 +77,36 @@ const Booking = ({ book, setModalBook }) => {
                                         <input type="text" placeholder="Type here" disabled defaultValue={book.name} className="input input-bordered w-full " />
 
                                     </div>
-                                    <div className="form-control w-full max-w-xs ">
+
+                                    <div className="form-control w-full max-w-xs">
                                         <label className="label">
                                             <span className="text-base">Price</span>
                                         </label>
-                                        <input type="text" placeholder="Type here" disabled defaultValue={resalePrice} className="input input-bordered w-full" />
+                                        <input
+                                            type="text"
+                                            placeholder="Type here"
+                                            disabled
+                                            value={totalPrice}
+                                            className="input input-bordered w-full"
+                                        />
+                                    </div>
+
+                                    <div className="form-control w-full max-w-xs">
+                                        <label className="label">
+                                            <span className="text-base">Quantity</span>
+                                        </label>
+                                        <input
+                                            type="number"
+                                            name="quantity"
+                                            placeholder="Type here"
+                                            className="input input-bordered w-full"
+                                            value={quantity}
+                                            required
+                                            onChange={handleQuantityChange}
+                                        />
+                                        {quantityError && (
+                                            <p className="text-red-500">{quantityError}</p>
+                                        )}
 
                                     </div>
                                 </div>
@@ -101,7 +145,7 @@ const Booking = ({ book, setModalBook }) => {
                                 </div>
                                 <div className='flex gap-5 justify-end'>
                                     <div className='flex justify-end my-2'>
-                                        <button type="submit" className='btn '>Buy</button>
+                                        <button type="submit" disabled={!formValid} className='btn '>Buy</button>
                                     </div>
                                     <div className='flex justify-end my-2'>
                                         <button onClick={handleCancel} className='btn '>Cancel</button>

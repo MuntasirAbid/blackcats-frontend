@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AdvertiseItem = ({ advertiseItem }) => {
-    const { _id, name, img, resalePrice, originalPrice, location, post, author, summery } = advertiseItem
+    const { _id, name, img, resalePrice, originalPrice, location, post, author, summery, productQuantity } = advertiseItem
     // console.log(advertiseItem);
     return (
 
@@ -18,6 +18,7 @@ const AdvertiseItem = ({ advertiseItem }) => {
                         <small className='text-base text-gray-500'>{author}</small>
                     </div>
                     <p><span className='font-semibold'>Posted on:</span> {`${post.slice(0, 34)}..`}</p>
+                    <p><span className='font-semibold'>Available:</span> {productQuantity} items</p>
                     <p><span className='font-semibold'>Location:</span> {location}</p>
                     <p className='font-bold text-gray-600'>{`$${resalePrice}`}</p>
 

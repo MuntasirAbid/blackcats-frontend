@@ -12,23 +12,53 @@ const AddProduct = () => {
         queryFn: () => fetch('http://localhost:10000/bookGenre')
             .then(res => res.json())
     })
-
-
+    const [quantity, setQuantity] = useState('');
+    const [yearOfPurchase, setYearOfPurchase] = useState('');
+    const [quantityError, setQuantityError] = useState('');
+    const [yearOfPurchaseError, setYearOfPurchaseError] = useState('');
     const [yearOfUse, setYearOfUse] = useState('');
+    const [yearOfUseError, setYearOfUseError] = useState('');
     const [formValid, setFormValid] = useState(true);
-    const [error, setError] = useState('');
 
-    const handleInputChange = (event) => {
+
+    const handleQuantityChange = (event) => {
+        const inputValue = event.target.value;
+        setQuantity(inputValue);
+
+        // Check if the input is a negative number
+        if (inputValue <= 0) {
+            setQuantityError('Quantity cannot be less then 1');
+            setFormValid(false)
+        } else {
+            setQuantityError('');
+            setFormValid(true)
+        }
+    };
+
+    const handleYearOfPurchaseChange = (event) => {
+        const inputValue = event.target.value;
+        setYearOfPurchase(inputValue);
+
+        // Check if the input is a negative number
+        if (inputValue <= 0) {
+            setYearOfPurchaseError('Year of purchase should be a positive number');
+            setFormValid(false)
+        } else {
+            setYearOfPurchaseError('');
+            setFormValid(true)
+        }
+    };
+
+    const handleYearOfUseChange = (event) => {
         const inputValue = event.target.value;
         setYearOfUse(inputValue);
 
-
         // Check if the input is a negative number
         if (inputValue < 0) {
-            setError('Year of use cannot be a negative number');
+            setYearOfUseError('Year of use cannot be a negative number');
             setFormValid(false)
         } else {
-            setError('');
+            setYearOfUseError('');
             setFormValid(true)
         }
     };
@@ -178,12 +208,22 @@ const AddProduct = () => {
                     </div>
                 </div>
                 <div className="flex gap-10">
-                    <div className="form-control w-full ">
+                    <div className="form-control w-full">
                         <label className="label">
                             <span className="text-base">Year of Purchase</span>
                         </label>
-                        <input type="number" name='yearOfPurchase' placeholder="Type here" className="input input-bordered w-full" required />
-
+                        <input
+                            type="number"
+                            name="yearOfPurchase"
+                            placeholder="Type here"
+                            className="input input-bordered w-full"
+                            value={yearOfPurchase}
+                            onChange={handleYearOfPurchaseChange}
+                            required
+                        />
+                        {yearOfPurchaseError && (
+                            <p className="text-red-500">{yearOfPurchaseError}</p>
+                        )}
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
@@ -195,10 +235,10 @@ const AddProduct = () => {
                             placeholder="Type here"
                             className="input input-bordered w-full"
                             value={yearOfUse}
-                            onChange={handleInputChange}
+                            onChange={handleYearOfUseChange}
                             required
                         />
-                        {error && <p className="text-red-500">{error}</p>}
+                        {yearOfUseError && <p className="text-red-500">{yearOfUseError}</p>}
                     </div>
                 </div>
 
@@ -207,8 +247,16 @@ const AddProduct = () => {
                     <label className="label">
                         <span className="text-base">Please input the quantity</span>
                     </label>
-                    <input type="number" name='quantity' placeholder="Type here" className="input input-bordered w-full" required />
-
+                    <input
+                        type="number"
+                        name="quantity"
+                        placeholder="Type here"
+                        className="input input-bordered w-full"
+                        value={quantity}
+                        onChange={handleQuantityChange}
+                        required
+                    />
+                    {quantityError && <p className="text-red-500">{quantityError}</p>}
                 </div>
 
 
