@@ -16,12 +16,12 @@ const Payment = () => {
     console.log(stripePromise)
     console.log(booking)
 
-    const { price,book,img,buyerName,buyerEmail,location,sellerName} = booking;
-    
+    const { price, book, img, buyerName, buyerEmail, location, sellerName } = booking;
+
     return (
         <div className='text-center mt-16 p-2'>
             <h3 className="text-3xl">Payment for {book}</h3>
-            {/* <p className="text-xl">Please pay <strong>${price}</strong> for your appointment on {appointmentDate} at {slot}</p> */}
+            <p className="text-xl">Please pay <strong>${price}</strong> for your product</p>
             <div className='w-96 my-12 mx-auto'>
                 <Elements stripe={stripePromise}>
                     <CheckoutForm

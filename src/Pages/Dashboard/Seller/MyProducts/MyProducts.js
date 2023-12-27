@@ -92,7 +92,7 @@ const MyProducts = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            {/* <small className='text-gray-500 text-sm'>{post.slice(0, 15)}</small> */}
+
                                             <div className="font-bold">{myProduct.name.slice(0, 55)}</div>
                                             <div className="text-sm opacity-50">By {myProduct.author}</div>
                                         </div>

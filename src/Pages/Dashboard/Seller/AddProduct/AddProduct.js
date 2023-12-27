@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
@@ -12,6 +12,30 @@ const AddProduct = () => {
         queryFn: () => fetch('http://localhost:10000/bookGenre')
             .then(res => res.json())
     })
+
+
+    const [yearOfUse, setYearOfUse] = useState('');
+    const [formValid, setFormValid] = useState(true);
+    const [error, setError] = useState('');
+
+    const handleInputChange = (event) => {
+        const inputValue = event.target.value;
+        setYearOfUse(inputValue);
+
+
+        // Check if the input is a negative number
+        if (inputValue < 0) {
+            setError('Year of use cannot be a negative number');
+            setFormValid(false)
+        } else {
+            setError('');
+            setFormValid(true)
+        }
+    };
+
+
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target;
@@ -26,6 +50,7 @@ const AddProduct = () => {
         const condition = form.condition.vale;
         const location = form.place.value;
         const sellerPhone = form.phone.value;
+        const productQuantity = form.quantity.value;
         const genre = form.genre.value;
         const image = form.photo.files[0]
         const status = "Available"
@@ -43,7 +68,7 @@ const AddProduct = () => {
             .then(data => {
                 console.log(data)
                 const img = data?.data?.display_url;
-                const product = { name, status, summery, resalePrice, originalPrice, yearOfPurchase, yearOfUse, sellerEmail, sellerName, sellerPhone, img, condition, location, genre }
+                const product = { name, status, summery, resalePrice, originalPrice, yearOfPurchase, yearOfUse, sellerEmail, sellerName, sellerPhone, productQuantity, img, condition, location, genre }
                 fetch('http://localhost:10000/products', {
                     method: "POST",
                     headers: {
@@ -56,7 +81,7 @@ const AddProduct = () => {
                     .then(data => {
                         console.log(data)
                         if (data.acknowledged) {
-                            toast.success("Added Successfully !")
+                            toast.success("Added Successfully! Please press the Advertise button to show the product in our Collections")
                             navigate('/dashboard/myproduct')
                         }
                     })
@@ -157,19 +182,38 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="text-base">Year of Purchase</span>
                         </label>
-                        <input type="text" name='yearOfPurchase' placeholder="Type here" className="input input-bordered w-full" required />
+                        <input type="number" name='yearOfPurchase' placeholder="Type here" className="input input-bordered w-full" required />
 
                     </div>
-                    <div className="form-control w-full ">
+                    <div className="form-control w-full">
                         <label className="label">
                             <span className="text-base">Year of Used</span>
                         </label>
-                        <input type="text" name='yearOfUse' placeholder="Type here" className="input input-bordered w-full" required />
-
+                        <input
+                            type="number"
+                            name="yearOfUse"
+                            placeholder="Type here"
+                            className="input input-bordered w-full"
+                            value={yearOfUse}
+                            onChange={handleInputChange}
+                            required
+                        />
+                        {error && <p className="text-red-500">{error}</p>}
                     </div>
                 </div>
+
+
+                <div className="form-control w-1/2 mx-auto">
+                    <label className="label">
+                        <span className="text-base">Please input the quantity</span>
+                    </label>
+                    <input type="number" name='quantity' placeholder="Type here" className="input input-bordered w-full" required />
+
+                </div>
+
+
                 <div className='flex justify-center  my-10'>
-                    <button type="submit" className='btn px-24 '>Add Product</button>
+                    <button type="submit" disabled={!formValid} className='btn px-24 '>Add Product</button>
                 </div>
             </form>
         </div>

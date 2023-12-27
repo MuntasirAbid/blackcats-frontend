@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ProductSection from './ProductSection';
+import Booking from './Booking';
+
 
 const ProductDetails = () => {
 
  const productDetails = useLoaderData();
- const { _id } = productDetails;
- console.log(productDetails);
+ const [modalBook, setModalBook] = useState(null);
+
+ console.log("modalBook:", modalBook);
 
  return (
   <div>
-   <ProductSection productDetails={productDetails}></ProductSection>
+   <ProductSection productDetails={productDetails} setModalBook={setModalBook} />
+
+   {
+    modalBook &&
+    <Booking book={modalBook} setModalBook={setModalBook}></Booking>
+   }
   </div>
  );
 };

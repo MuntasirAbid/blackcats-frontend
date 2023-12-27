@@ -8,16 +8,15 @@ const Books = () => {
     const [modalBook, setModalBook] = useState(null)
     // console.log(books)
     return (
-        <div className='md:grid grid-cols-2 gap-20 w-3/4 mx-auto my-12'>
-            {
-                books.map(book => <Book book={book} modalBook={modalBook} setModalBook={setModalBook} key={book._id}></Book>)
-            }
+        <div className='grid place-content-center'>
+            <div className='grid grid-cols-1  lg:grid-cols-4 md:grid-cols-3 gap-16  pt-5'>
+                {
+                    books.map(book => <Book book={book} modalBook={modalBook} setModalBook={setModalBook} key={book._id}></Book>)
+                }
+            </div>
 
-            {
-                modalBook &&
-                <Booking book={modalBook} setModalBook={setModalBook}></Booking>
-            }
         </div>
+
     );
 };
 
