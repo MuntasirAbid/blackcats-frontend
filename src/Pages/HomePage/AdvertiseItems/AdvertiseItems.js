@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+
 import React, { useEffect, useRef, useState } from 'react';
 import AdvertiseItem from './AdvertiseItem';
 

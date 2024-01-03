@@ -183,9 +183,10 @@ const AddProduct = () => {
                             <span className="text-base">Condition</span>
                         </label>
                         <select name='condition' className="select select-bordered w-full max-w-xs" required>
-                            <option value='Excellent'>Excellent</option>
-                            <option value='Good'>Good</option>
-                            <option value='Fair'>Fair</option>
+                            <option value='New'>New</option>
+                            <option value='Excellent'>Used(Excellent)</option>
+                            <option value='Good'>Used(Good)</option>
+                            <option value='Fair'>Used(Fair)</option>
                         </select>
                     </div>
                 </div>

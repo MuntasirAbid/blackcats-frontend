@@ -11,14 +11,28 @@ const ProductSection = ({ productDetails, setModalBook }) => {
 
 
  const handleBuyNow = () => {
-  console.log("buy now clicked");
+
   if (user) {
-   console.log("Calling setModalBook");
+
    setModalBook(productDetails);
   } else {
 
    navigate('/login', { state: { from: locations } });
   }
+ };
+
+ const handleAddToCart = () => {
+  // Get the existing cart items from local storage or initialize an empty array
+  const existingCartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Add the current productDetails to the cart
+  existingCartItems.push(productDetails);
+
+  // Save the updated cart back to local storage
+  localStorage.setItem('cart', JSON.stringify(existingCartItems));
+
+  // You can also show a message or perform any other actions after adding to the cart
+  console.log('Product added to cart:', productDetails);
  };
 
  const { _id, name, status, summery, resalePrice, originalPrice, yearOfPurchase, yearOfUse, sellerEmail, sellerName, sellerPhone, img, location, genre, post } = productDetails
@@ -54,6 +68,7 @@ const ProductSection = ({ productDetails, setModalBook }) => {
 
     <div className="card-actions justify-end">
      <label htmlFor="book" className="btn btn-primary " onClick={handleBuyNow}>Proceed to checkout</label>
+     <label htmlFor="book" className="btn btn-primary " onClick={handleAddToCart} >Add to Cart</label>
     </div>
    </div>
   </div>

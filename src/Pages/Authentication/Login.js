@@ -101,8 +101,12 @@ const Login = () => {
                     </div>
                     <button type="submit" className="text-white bg-indigo-500 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 
-                    <p className='text-center my-5'><span>New To Black Cats?</span> <Link className='text-orange-400' to="/register">Sign Up</Link></p>
+                    {/* <p className='text-center my-5'><span>New To Black Cats?</span> <Link className='text-orange-400' to="/register">Sign Up</Link></p> */}
                 </form>
+                <div className='divider text-sm text-gray-400 py-5'>New To Black Cats?</div>
+                <div className='grid place-content-center border rounded-lg shadow-md p-1 hover:bg-slate-100 hover:cursor-pointer'>
+                    <Link className='' to="/register"><button>Create your Black Cats Account</button></Link>
+                </div>
             </div>
 
             <div className='hidden lg:block'>

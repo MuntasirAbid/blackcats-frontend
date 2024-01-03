@@ -13,7 +13,6 @@ const MyProducts = () => {
             .then(res => res.json())
     })
 
-    console.log(myProducts)
     // delete
     const handleDelete = (id) => {
         console.log(id)
@@ -103,7 +102,10 @@ const MyProducts = () => {
                                     <br />
                                     <span className="badge badge-ghost badge-sm">Original Price {myProduct.originalPrice}</span>
                                 </td>
-                                <td>{myProduct.status}</td>
+                                <td>{myProduct.productQuantity}
+                                    <br />
+                                    <span className='badge badge-sm'>Available</span>
+                                </td>
                                 <th>
                                     {
                                         myProduct.advertise &&

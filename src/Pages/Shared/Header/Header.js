@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import { FaUserCircle } from 'react-icons/fa';
+import { BsCart4 } from "react-icons/bs";
+import { FiUser } from "react-icons/fi";
 import logo from '../../../assets/blackCat.jpeg'
 
 
@@ -17,13 +19,17 @@ const Header = () => {
   }
 
   const [navbar, setNavbar] = useState(false);
+  const [cartItemCount, setCartItemCount] = useState(0);
 
   useEffect(() => {
     setNavbar(false);
+
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    setCartItemCount(cartItems.length);
   }, [location.pathname])
 
   return (
-    <nav className='w-full bg-black ' >
+    <nav className='w-full bg-black' >
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -90,23 +96,60 @@ const Header = () => {
               <li className="text-white font-semibold text-lg hover:text-red-800">
                 <Link to="/">Home</Link>
               </li>
-              <li className="text-white font-semibold text-lg hover:text-red-600">
+              <li className="text-white font-semibold text-lg hover:text-red-800">
                 <Link to="/blog">FAQ</Link>
               </li>
               <li className="text-white font-semibold text-lg hover:text-red-800">
                 <Link to="/contactUs">Contact Us</Link>
               </li>
+              <li className="text-white font-semibold text-lg hover:text-red-800 flex hover:cursor-pointer">
+                <div className='mt-4'>
+
+                  <BsCart4 className='h-8 w-8' />
+                </div>
+
+                <div className='mb-4'>
+                  {cartItemCount > 0 && (
+                    <span className="bg-red-500 rounded-full text-white text-xs px-2 py-1 ml-1">
+                      {cartItemCount}
+                    </span>
+                  )}
+                  <div> Cart</div>
+                </div>
+              </li>
 
               {user?.uid ?
 
                 <>
-                  <li className="text-white font-semibold text-lg hover:text-red-600">
-                    <Link onClick={handleLogOut} >Log Out</Link>
+                  <li className='text-white font-semibold text-lg hover:text-red-800 flex '>
+                    <div className='flex'>
+
+                      <div className='mt-2 mr-1 '>
+                        <FiUser className='h-8 w-8 ' />
+                      </div>
+                      <div className=''>
+                        <p className='text-sm'>Hi {user.displayName}</p>
+                        <details className="dropdown">
+
+                          <summary className="text-sm hover:cursor-pointer">Account</summary>
+                          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52 ">
+                            <div className='flex'>
+                              <p>Welcome back, {user.displayName}</p>
+                              <button ><img className='rounded-full w-16' src={user?.photoURL ? user?.photoURL : <FaUserCircle></FaUserCircle>} alt="" /></button>
+                            </div>
+                            <li className='text-black'><Link onClick={handleLogOut}>Log Out</Link></li>
+                          </ul>
+                        </details>
+                      </div>
+
+                    </div>
+
                   </li>
-                  <li className="text-white font-semibold text-lg hover:text-red-600">
+
+                  <li className="text-white font-semibold text-lg hover:text-red-800">
                     <Link to='/dashboard' >Dashboard</Link>
                   </li>
-                  <li className="text-white font-semibold text-lg hover:text-red-600">
+                  <li className="text-white font-semibold text-lg hover:text-red-800">
                     <Link >
                       <div className="tooltip tooltip-bottom" data-tip={user?.displayName ? user?.displayName : "User"}>
                         <button ><img className='rounded-full w-10' src={user?.photoURL ? user?.photoURL : <FaUserCircle></FaUserCircle>} alt="" /></button>
@@ -116,12 +159,28 @@ const Header = () => {
                 </>
                 :
                 <>
-                  <li className="text-white font-semibold text-xl hover:text-red-600">
-                    <Link to="/login">Log In</Link>
+                  <li className='text-white font-semibold text-lg hover:text-red-800 flex '>
+                    <div className='flex'>
+
+                      <div className='mt-2 mr-1 '>
+                        <FiUser className='h-8 w-8 ' />
+                      </div>
+                      <div className=''>
+                        <p className='text-sm'>Welcome</p>
+                        <details className="dropdown">
+
+                          <summary className="text-sm hover:cursor-pointer">Sign in/Register</summary>
+                          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                            <li className='text-black'><Link to="/login">Sign in</Link></li>
+                            <li className='text-black'><Link to="/register">Register</Link></li>
+                          </ul>
+                        </details>
+                      </div>
+
+                    </div>
+
                   </li>
-                  <li className="text-white font-semibold text-xl hover:text-red-600">
-                    <Link to="/register">Sign Up</Link>
-                  </li>
+
                 </>
 
               }
