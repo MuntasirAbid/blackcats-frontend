@@ -8,11 +8,13 @@ const AdvertiseItems = () => {
     const [count, setCount] = useState(0);
     const [page, setPage] = useState(0);
     const [size, setSize] = useState(8);
+    const [search, setSearch] = useState('')
+    const searchRef = useRef();
 
     // const collectionRef = useRef(null);
 
     useEffect(() => {
-        const url = `http://localhost:10000/advertiseProducts?page=${page}&size=${size}`;
+        const url = `http://localhost:10000/advertiseProducts?search=${search}&page=${page}&size=${size}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -24,7 +26,11 @@ const AdvertiseItems = () => {
                 //     block: 'start',
                 // });
             })
-    }, [page, size])
+    }, [page, size, search])
+
+    const handleSearch = () => {
+        setSearch(searchRef.current.value);
+    }
 
     const pages = Math.ceil(count / size);
 
@@ -33,6 +39,11 @@ const AdvertiseItems = () => {
         return (
             <div>
                 <h2 className=' text-primary text-4xl font-semibold text-center my-16'>Ours Collection</h2>
+                <div className='grid place-items-center mb-5'>
+
+                    <input className='input input-bordered input-sm' onChange={handleSearch} ref={searchRef} type="text" placeholder='Search here' />
+                </div>
+
                 <div className='grid grid-cols-1  lg:grid-cols-4 md:grid-cols-3 gap-16'>
                     {
                         advertiseItems.map(advertiseItem => <AdvertiseItem key={advertiseItem._id} advertiseItem={advertiseItem}></AdvertiseItem>)
