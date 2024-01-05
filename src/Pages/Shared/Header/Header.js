@@ -25,11 +25,16 @@ const Header = () => {
     setNavbar(false);
 
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    setCartItemCount(cartItems.length);
+
+    setCartItemCount(cartItems);
   }, [location.pathname])
 
+
+
+
+
   return (
-    <nav className='w-full bg-black' >
+    <nav className='w-full bg-black ' >
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -102,21 +107,25 @@ const Header = () => {
               <li className="text-white font-semibold text-lg hover:text-red-800">
                 <Link to="/contactUs">Contact Us</Link>
               </li>
-              <li className="text-white font-semibold text-lg hover:text-red-800 flex hover:cursor-pointer">
-                <div className='mt-4'>
+              <Link to="/cart">
+                <li className="text-white font-semibold text-lg hover:text-red-800 flex hover:cursor-pointer">
+                  <div className='mt-4'>
 
-                  <BsCart4 className='h-8 w-8' />
-                </div>
+                    <BsCart4 className='h-8 w-8' />
+                  </div>
 
-                <div className='mb-4'>
-                  {cartItemCount > 0 && (
-                    <span className="bg-red-500 rounded-full text-white text-xs px-2 py-1 ml-1">
-                      {cartItemCount}
-                    </span>
-                  )}
-                  <div> Cart</div>
-                </div>
-              </li>
+                  <div className='mb-4'>
+                    {cartItemCount.length > 0 ? (
+                      <span className="bg-red-500 rounded-full text-white text-xs px-2 py-1 ml-1">
+                        {cartItemCount.length}
+                      </span>
+                    ) : <span className="bg-red-500 rounded-full text-white text-xs px-2 py-1 ml-1">
+                      0
+                    </span>}
+                    <div> Cart</div>
+
+                  </div>
+                </li></Link>
 
               {user?.uid ?
 
@@ -182,14 +191,10 @@ const Header = () => {
                   </li>
 
                 </>
-
               }
-
             </ul>
           </div>
-
         </div>
-
       </div>
 
     </nav>

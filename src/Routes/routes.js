@@ -21,6 +21,7 @@ import PrivateRoute from "./PrivateRoute";
 import SellerRoute from "./SellerRoute";
 import ContactUs from "../Pages/HomePage/ContactUs/ContactUs";
 import ProductDetails from "../Pages/Books/ProductDetails";
+import Cart from "../Pages/Books/Cart/Cart";
 
 export const router = createBrowserRouter([
     {
@@ -48,6 +49,11 @@ export const router = createBrowserRouter([
                 path: "/contactUs",
                 element: <ContactUs></ContactUs>
             },
+            {
+                path: "/cart",
+                element: <Cart></Cart>
+            }
+            ,
 
             {
                 path: "/categories/:name",

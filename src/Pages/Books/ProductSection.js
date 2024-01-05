@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
-import { PhotoProvider, PhotoView } from 'react-photo-view';
+
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import toast from 'react-hot-toast';
 
 const ProductSection = ({ productDetails, setModalBook }) => {
 
@@ -22,20 +23,41 @@ const ProductSection = ({ productDetails, setModalBook }) => {
  };
 
  const handleAddToCart = () => {
-  // Get the existing cart items from local storage or initialize an empty array
+  // cont [quantity, setQuantity] =useState()
   const existingCartItems = JSON.parse(localStorage.getItem('cart')) || [];
 
-  // Add the current productDetails to the cart
-  existingCartItems.push(productDetails);
+  const productId = productDetails._id;
 
-  // Save the updated cart back to local storage
+  const existingProductIndex = existingCartItems.findIndex(item => item._id === productId)
+
+  if (existingProductIndex !== -1) {
+
+   // Product with the same id found, increment the quantity
+   existingCartItems[existingProductIndex].quantity += 1;
+   delete existingCartItems[existingProductIndex].productQuantity;
+  } else {
+   const newItem = { ...productDetails, quantity: 1 };
+   delete newItem.productQuantity;
+   delete newItem.location;
+   // Product not found, add a new item with quantity 1
+   existingCartItems.push(newItem);
+
+  }
+
   localStorage.setItem('cart', JSON.stringify(existingCartItems));
 
-  // You can also show a message or perform any other actions after adding to the cart
-  console.log('Product added to cart:', productDetails);
+  toast.success('Product added to Cart');
+
+  // window.location.reload()
+
+  console.log(existingCartItems);
+
  };
 
- const { _id, name, status, summery, resalePrice, originalPrice, yearOfPurchase, yearOfUse, sellerEmail, sellerName, sellerPhone, img, location, genre, post } = productDetails
+
+
+ const { name, status, summery, resalePrice, originalPrice, yearOfPurchase, yearOfUse, sellerEmail, sellerName, sellerPhone, img, location, genre, post } = productDetails
+
 
  return (
   <div className="card card-side bg-base-100 shadow-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 ">

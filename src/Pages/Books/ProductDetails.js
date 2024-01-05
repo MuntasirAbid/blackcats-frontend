@@ -9,8 +9,6 @@ const ProductDetails = () => {
  const productDetails = useLoaderData();
  const [modalBook, setModalBook] = useState(null);
 
- console.log("modalBook:", modalBook);
-
  return (
   <div>
    <ProductSection productDetails={productDetails} setModalBook={setModalBook} />

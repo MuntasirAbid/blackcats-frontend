@@ -53,7 +53,7 @@ const Booking = ({ book, setModalBook }) => {
                 setModalBook(null)
                 toast.success("Booking Successful!")
             })
-
+        console.log(booking);
     }
 
     const handleCancel = () => {
