@@ -44,12 +44,18 @@ const Header = () => {
 
             {/* logo */}
 
-            <Link to="/">
-              <div className='flex items-center'>
-                <img src={logo} className="w-12 rounded-full" alt="" />
-                <h2 className='text-2xl ml-2 font-bold font-serif text-white  hover:text-purple-300'>BLACK CATS</h2>
-              </div>
-            </Link>
+            <div className='flex '>
+              <Link to="/">
+                <div className='flex items-center'>
+                  <img src={logo} className="w-12 rounded-full" alt="" />
+                  <h2 className='text-2xl ml-2 font-bold font-serif text-white  hover:text-purple-300'>BLACK CATS</h2>
+                </div>
+              </Link>
+
+              {/* <div className="form-control ">
+                <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
+              </div> */}
+            </div>
 
 
             {/* header */}
