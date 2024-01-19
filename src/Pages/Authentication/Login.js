@@ -8,6 +8,8 @@ import app from '../../firebase.config';
 import loginImg from "../../../src/assets/MicrosoftTeams-image.png"
 import PrimaryButton from '../../Components/button/ButtonPrimary';
 import SmallSpinner from '../../Components/Loading/SmallLoading';
+import Divider from '../../Components/Divider/Divider';
+
 
 const auth = getAuth(app)
 
@@ -77,7 +79,7 @@ const Login = () => {
     }
 
     return (
-        <div className='grid lg:grid-cols-2 md:mt-10 lg:mt-10 '>
+        <div className='grid lg:grid-cols-2 md:mt-5 lg:mt-0 '>
 
             <div className='  lg:my-auto lg:p-12 p-10 md:p-20'>
                 <h2 className='text-center text-3xl md:text-4xl font-bold pb-12 text-purple-300'>Log In to join Now !</h2>
@@ -113,7 +115,16 @@ const Login = () => {
 
 
                 </form>
-                <div className='divider divider-accent text-sm text-purple-500 py-5'>New To Black Cats?</div>
+
+
+                <div className="my-2 flex items-center justify-center">
+                    <div className="bg-gradient-to-r from-purple-400 via-purple-600 h-1 w-16 md:w-40 lg:w-64"></div>
+                    <div className='divider text-sm text-purple-500 px-4'>New To Black Cats?</div>
+                    <div className="bg-gradient-to-l from-purple-400 via-purple-600 h-1 w-16 md:w-40 lg:w-64"></div>
+                </div>
+
+
+
                 <Link className='' to="/register">
                     <div className='grid place-content-center rounded-lg shadow-md p-1 text-white bg-gradient-to-r from-purple-400 via-purple-600 to-purple-400 hover:from-purple-500 hover:via-purple-700 hover:to-purple-500 focus:from-gray-200 focus:via-gray-400 focus:to-gray-200 hover:text-gray-300 hover:cursor-pointer'>
                         <button>Create your Black Cats Account</button>

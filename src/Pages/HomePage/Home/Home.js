@@ -1,11 +1,9 @@
 import React from 'react';
 import Categories from '../Categories/Categories';
-// import HomeBanner from '../HomeBanner/HomeBanner';
 import AboutUs from '../AboutUs/AboutUs';
 import AdvertiseItems from '../AdvertiseItems/AdvertiseItems';
 import { useQuery } from '@tanstack/react-query';
-// import { Carousel } from 'flowbite';
-import Carousel from "../Carousel/Carousel"
+
 import Slider from '../Carousel/Carousel';
 
 
@@ -19,6 +17,7 @@ const Home = () => {
         return (
             <div>
                 <div className=''>
+                    {/* carousel */}
                     <Slider></Slider>
                 </div>
                 <div className='mx-14  space-y-10'>
@@ -34,6 +33,7 @@ const Home = () => {
     return (
         <div>
             <div className=''>
+                {/* carousel */}
                 <Slider></Slider>
             </div>
             <div className='mx-14  space-y-10'>
