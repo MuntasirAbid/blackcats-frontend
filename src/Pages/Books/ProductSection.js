@@ -48,7 +48,7 @@ const ProductSection = ({ productDetails, setModalBook }) => {
 
   toast.success('Product added to Cart');
 
-  // window.location.reload()
+  window.location.reload()
 
   console.log(existingCartItems);
 
@@ -60,7 +60,7 @@ const ProductSection = ({ productDetails, setModalBook }) => {
 
 
  return (
-  <div className="card card-side bg-base-100 shadow-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 ">
+  <div className="card card-side bg-base-100 shadow-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2   ">
    <>
 
     <img src={img} alt="Movie" className='' />
@@ -89,8 +89,8 @@ const ProductSection = ({ productDetails, setModalBook }) => {
     </div>
 
     <div className="card-actions justify-end">
-     <label htmlFor="book" className="btn btn-primary " onClick={handleBuyNow}>Proceed to checkout</label>
-     <label htmlFor="book" className="btn btn-primary " onClick={handleAddToCart} >Add to Cart</label>
+     <label htmlFor="book" className="btn bg-purple-300  text-black hover:bg-purple-400 border-none capitalize" onClick={handleBuyNow}>Proceed to checkout</label>
+     <label htmlFor="book" className="btn bg-purple-300 text-black hover:bg-purple-400 border-none capitalize" onClick={handleAddToCart} >Add to Cart</label>
     </div>
    </div>
   </div>

@@ -5,11 +5,14 @@ import useToken from '../../Hooks/useToken';
 import { toast } from 'react-hot-toast';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import app from '../../firebase.config';
+import loginImg from "../../../src/assets/MicrosoftTeams-image.png"
+import PrimaryButton from '../../Components/button/ButtonPrimary';
+import SmallSpinner from '../../Components/Loading/SmallLoading';
 
 const auth = getAuth(app)
 
 const Login = () => {
-    const { logIn, googleLogin } = useContext(AuthContext)
+    const { logIn, googleLogin, loading, setLoading } = useContext(AuthContext)
     const [userEmail, setUserEmail] = useState('')
     const [loginEmail, setLoginEmail] = useState('')
 
@@ -44,6 +47,7 @@ const Login = () => {
             .catch(error => {
                 console.log(error.message)
                 setError(error.message);
+                setLoading(false)
 
             })
 
@@ -68,30 +72,28 @@ const Login = () => {
             })
             .catch(er => {
                 console.log(er);
+                setError(er)
             })
     }
 
     return (
-        <div className='lg:grid grid-cols-3 pt-24 '>
-            <div className='hidden lg:block'>
-                <img src="{lockPhone}" alt="" />
-            </div>
+        <div className='grid lg:grid-cols-2 pt-10 '>
 
-            <div className='lg:my-auto lg:p-12 p-10 md:p-20'>
-                <h2 className='text-center text-3xl md:text-4xl font-bold pb-12 '>Log In to join Now !</h2>
-                <form onSubmit={handleSubmit} className=' shadow-lg rounded-2xl p-4 md:p-20'>
+            <div className='  lg:my-auto lg:p-12 p-10 md:p-20'>
+                <h2 className='text-center text-3xl md:text-4xl font-bold pb-12 text-purple-300'>Log In to join Now !</h2>
+                <form onSubmit={handleSubmit} className='bg-white shadow-lg rounded-2xl p-4 md:p-20'>
 
                     <div className="mb-6">
-                        <label htmlFor="email" className="block mb-2  font-medium text-gray-900 dark:text-gray-300">Your E-mail</label>
+                        <label htmlFor="email" className="block mb-2  font-medium text-purple-400">Your E-mail</label>
                         <input
                             onBlur={handleEmailBlur}
-                            type="email" name="email" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="E-mail" required="Email is required"
+                            type="email" name="email" className="input border-2 placeholder-gray-200 bg-stone-500 caret-white text-black focus:border-purple-300 w-full text-sm" placeholder="E-mail" required="Email is required"
                         />
                     </div>
 
                     <div className="mb-2">
-                        <label htmlFor="password" className="block mb-2  font-medium text-gray-900 dark:text-gray-300">Your password</label>
-                        <input type="password" name="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required="" />
+                        <label htmlFor="password" className="block mb-2  font-medium text-purple-400">Your password</label>
+                        <input type="password" name="password" className="input border-2 placeholder-gray-200 bg-stone-500 caret-white text-black focus:border-purple-300 w-full text-sm" placeholder="Password" required="" />
                     </div>
                     <p className='text-xl text-red-500 py-3'>{error}</p>
                     <div className='pb-2'>
@@ -99,19 +101,31 @@ const Login = () => {
                             Forgot Password?
                         </Link>
                     </div>
-                    <button type="submit" className="text-white bg-indigo-500 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
 
-                    {/* <p className='text-center my-5'><span>New To Black Cats?</span> <Link className='text-orange-400' to="/register">Sign Up</Link></p> */}
+                    <div>
+                        <PrimaryButton
+                            type='submit'
+                            classes='w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100 transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 duration-200 ... '
+                        >
+                            {loading ? <SmallSpinner></SmallSpinner> : 'Login'}
+                        </PrimaryButton>
+                    </div>
+
+
                 </form>
-                <div className='divider text-sm text-gray-400 py-5'>New To Black Cats?</div>
-                <div className='grid place-content-center border rounded-lg shadow-md p-1 hover:bg-slate-100 hover:cursor-pointer'>
-                    <Link className='' to="/register"><button>Create your Black Cats Account</button></Link>
-                </div>
+                <div className='divider divider-accent text-sm text-purple-500 py-5'>New To Black Cats?</div>
+                <Link className='' to="/register">
+                    <div className='grid place-content-center rounded-lg shadow-md p-1 text-white bg-gradient-to-r from-purple-400 via-purple-600 to-purple-400 hover:from-purple-500 hover:via-purple-700 hover:to-purple-500 focus:from-gray-200 focus:via-gray-400 focus:to-gray-200 hover:text-gray-300 hover:cursor-pointer'>
+                        <button>Create your Black Cats Account</button>
+                    </div>
+                </Link>
             </div>
 
-            <div className='hidden lg:block'>
-                <img src="{personComputer}" alt="" />
+            <div className='hidden lg:flex items-center justify-center '>
+                <img className='rounded' src={loginImg} alt="" />
             </div>
+
+
         </div>
     );
 };

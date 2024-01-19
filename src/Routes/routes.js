@@ -22,6 +22,7 @@ import SellerRoute from "./SellerRoute";
 import ContactUs from "../Pages/HomePage/ContactUs/ContactUs";
 import ProductDetails from "../Pages/Books/ProductDetails";
 import Cart from "../Pages/Books/Cart/Cart";
+import AdvertiseItems from "../Pages/HomePage/AdvertiseItems/AdvertiseItems";
 
 export const router = createBrowserRouter([
     {
@@ -52,18 +53,24 @@ export const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <Cart></Cart>
+            },
+            {
+                path: "/advertiseItems",
+                element: <AdvertiseItems></AdvertiseItems>
+
             }
+
             ,
 
             {
                 path: "/categories/:name",
                 element: <Books></Books>,
-                loader: ({ params }) => fetch(`http://localhost:10000/categories/${params.name}`)
+                loader: ({ params }) => fetch(`https://buy-sell-store-backend.vercel.app/categories/${params.name}`)
             },
             {
                 path: "/product/:productId",
                 element: <ProductDetails></ProductDetails>,
-                loader: ({ params }) => fetch(`http://localhost:10000/product/${params.productId}`)
+                loader: ({ params }) => fetch(`https://buy-sell-store-backend.vercel.app/product/${params.productId}`)
             },
         ],
 
@@ -109,7 +116,7 @@ export const router = createBrowserRouter([
             {
                 path: "/dashboard/payment/:id",
                 element: <PrivateRoute><Payment></Payment></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:10000/payment/${params.id}`)
+                loader: ({ params }) => fetch(`https://buy-sell-store-backend.vercel.app/payment/${params.id}`)
             },
         ]
     }

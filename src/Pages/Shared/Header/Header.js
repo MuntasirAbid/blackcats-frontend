@@ -11,6 +11,7 @@ const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const location = useLocation();
 
+
   // console.log(user)
   const handleLogOut = () => {
     logOut()
@@ -29,16 +30,14 @@ const Header = () => {
     setCartItemCount(cartItems);
   }, [location.pathname])
 
-
-
-
-
   return (
     <nav className='w-full bg-black ' >
       <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
+
             {location.pathname.includes("dashboard") &&
+
               <label htmlFor="dashboard-drawer" tabIndex={2} className="btn btn-white lg:hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
               </label>}
@@ -48,9 +47,10 @@ const Header = () => {
             <Link to="/">
               <div className='flex items-center'>
                 <img src={logo} className="w-12 rounded-full" alt="" />
-                <h2 className='text-2xl ml-2 font-bold font-serif text-white  hover:text-red-600'>BLACK CATS</h2>
+                <h2 className='text-2xl ml-2 font-bold font-serif text-white  hover:text-purple-300'>BLACK CATS</h2>
               </div>
             </Link>
+
 
             {/* header */}
 
@@ -98,17 +98,17 @@ const Header = () => {
               }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-white font-semibold text-lg hover:text-red-800">
+              <li className="text-white font-semibold text-lg hover:text-purple-300">
                 <Link to="/">Home</Link>
               </li>
-              <li className="text-white font-semibold text-lg hover:text-red-800">
+              <li className="text-white font-semibold text-lg hover:text-purple-300">
                 <Link to="/blog">FAQ</Link>
               </li>
-              <li className="text-white font-semibold text-lg hover:text-red-800">
+              <li className="text-white font-semibold text-lg hover:text-purple-300">
                 <Link to="/contactUs">Contact Us</Link>
               </li>
               <Link to="/cart">
-                <li className="text-white font-semibold text-lg hover:text-red-800 flex hover:cursor-pointer">
+                <li className="text-white font-semibold text-lg hover:text-purple-300 flex hover:cursor-pointer">
                   <div className='mt-4'>
 
                     <BsCart4 className='h-8 w-8' />
@@ -116,10 +116,10 @@ const Header = () => {
 
                   <div className='mb-4'>
                     {cartItemCount.length > 0 ? (
-                      <span className="bg-red-500 rounded-full text-white text-xs px-2 py-1 ml-1">
+                      <span className="bg-purple-900 rounded-full text-white text-xs px-2 py-1 ml-1">
                         {cartItemCount.length}
                       </span>
-                    ) : <span className="bg-red-500 rounded-full text-white text-xs px-2 py-1 ml-1">
+                    ) : <span className="bg-purple-900 rounded-full text-white text-xs px-2 py-1 ml-1">
                       0
                     </span>}
                     <div> Cart</div>
@@ -130,45 +130,39 @@ const Header = () => {
               {user?.uid ?
 
                 <>
-                  <li className='text-white font-semibold text-lg hover:text-red-800 flex '>
+                  <li className='text-white font-semibold text-lg hover:text-purple-300 flex '>
                     <div className='flex'>
 
                       <div className='mt-2 mr-1 '>
                         <FiUser className='h-8 w-8 ' />
                       </div>
                       <div className=''>
-                        <p className='text-sm'>Hi {user.displayName}</p>
-                        <details className="dropdown">
+                        <p className='text-sm'>Hi <span className='text-lg'>{user.displayName}</span> </p>
+                        <p>
+                          <li className=' text-black  rounded-lg p-1 text-xs bg-gradient-to-r from-emerald-500 to-lime-500 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-lime-600 hover:text-white'><Link onClick={handleLogOut}>Log Out</Link></li>
+                        </p>
 
-                          <summary className="text-sm hover:cursor-pointer">Account</summary>
-                          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52 ">
-                            <div className='flex'>
-                              <p>Welcome back, {user.displayName}</p>
-                              <button ><img className='rounded-full w-16' src={user?.photoURL ? user?.photoURL : <FaUserCircle></FaUserCircle>} alt="" /></button>
-                            </div>
-                            <li className='text-black'><Link onClick={handleLogOut}>Log Out</Link></li>
-                          </ul>
-                        </details>
                       </div>
 
                     </div>
 
                   </li>
 
-                  <li className="text-white font-semibold text-lg hover:text-red-800">
+                  <li className="text-white font-semibold text-lg hover:text-purple-300">
                     <Link to='/dashboard' >Dashboard</Link>
                   </li>
-                  <li className="text-white font-semibold text-lg hover:text-red-800">
+                  <li className="text-white font-semibold text-lg hover:text-purple-300">
                     <Link >
                       <div className="tooltip tooltip-bottom" data-tip={user?.displayName ? user?.displayName : "User"}>
-                        <button ><img className='rounded-full w-10' src={user?.photoURL ? user?.photoURL : <FaUserCircle></FaUserCircle>} alt="" /></button>
+                        {user?.photoURL ?
+                          <button ><img className='rounded-full w-10' src={user?.photoURL} alt="" /></button> : <FaUserCircle className='text-3xl'></FaUserCircle>}
                       </div>
                     </Link>
                   </li>
                 </>
                 :
                 <>
-                  <li className='text-white font-semibold text-lg hover:text-red-800 flex '>
+                  <li className='text-white font-semibold text-lg hover:text-purple-300 flex '>
                     <div className='flex'>
 
                       <div className='mt-2 mr-1 '>
@@ -176,14 +170,10 @@ const Header = () => {
                       </div>
                       <div className=''>
                         <p className='text-sm'>Welcome</p>
-                        <details className="dropdown">
+                        <p>
+                          <Link to="/login">  <button className='w-full text-black  rounded-lg p-1 text-xs bg-gradient-to-r from-emerald-500 to-lime-500 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-lime-600 hover:text-white'>Sign in</button> </Link>
+                        </p>
 
-                          <summary className="text-sm hover:cursor-pointer">Sign in/Register</summary>
-                          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                            <li className='text-black'><Link to="/login">Sign in</Link></li>
-                            <li className='text-black'><Link to="/register">Register</Link></li>
-                          </ul>
-                        </details>
                       </div>
 
                     </div>
