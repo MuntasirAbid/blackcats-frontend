@@ -7,13 +7,13 @@ const AdminNav = () => {
     return (
         <div>
             <ul className="">
-                <li className=" font-semibold text-lg">
+                <li className=" font-semibold text-lg text-purple-600">
                     <Link to="/dashboard/all-seller"><FaHandHoldingUsd></FaHandHoldingUsd>All Sellers</Link>
                 </li>
-                <li className=" font-semibold text-lg">
+                <li className=" font-semibold text-lg text-purple-600">
                     <Link to="/dashboard/all-buyer"><FaHandHoldingHeart></FaHandHoldingHeart>All Buyers</Link>
                 </li>
-                <li className=" font-semibold text-lg">
+                <li className=" font-semibold text-lg text-purple-600">
                     <Link to="/dashboard/reported-items"><MdReport></MdReport>Reported Items</Link>
                 </li>
 

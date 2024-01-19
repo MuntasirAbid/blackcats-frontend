@@ -67,16 +67,16 @@ const Cart = () => {
 
      <div>
       {cartItems?.length > 0 && cartItems.map((item, index) => (
-       <div className="card card-side bg-base-100 shadow-xl my-2">
+       <div className="card card-side bg-gray-300 shadow-xl my-2">
         <figure className='w-32 h-32'><img src={item.img} alt='' /></figure>
         <div className="card-body">
          <h2 className="card-title">{`${item.name.slice(0, 60)}...`}</h2>
          <p>Price: {item.resalePrice}$</p>
 
-         <div className='flex justify-between relative'>
+         <div className='flex justify-between relative '>
 
           <div>
-           <p className='flex'>Quantity:  <CiCircleMinus className='ml-2 w-6 h-6  rounded-xl hover:text-red-900 hover:cursor-pointer' onClick={() => handleDecrement(index)} /> <span className='px-2 font-semibold'>{item.quantity}</span> <CiCirclePlus className='w-6 h-6 hover:text-red-900 hover:cursor-pointer' onClick={() => handleIncrement(index)}
+           <p className='flex'>Quantity:  <CiCircleMinus className='ml-2 w-6 h-6  rounded-xl hover:text-purple-700 hover:cursor-pointer' onClick={() => handleDecrement(index)} /> <span className='px-2 font-semibold'>{item.quantity}</span> <CiCirclePlus className='w-6 h-6 hover:text-purple-700 hover:cursor-pointer' onClick={() => handleIncrement(index)}
            /></p>
 
           </div>
@@ -93,14 +93,14 @@ const Cart = () => {
      </div>
 
      <div className=''>
-      <div className="card bg-white-700 shadow-lg text-black">
-       <div className="card-body items-center text-center">
+      <div className="card shadow-lg text-black">
+       <div className="card-body items-center text-center bg-gray-300 rounded-xl mt-2">
         <h2 className="card-title">Order Summery</h2>
         <p>Selected Items: {cartItems.length}</p>
         <p >Total Price: <span className='font-bold'> ${total} </span></p>
 
         <div className="card-actions justify-end">
-         <button className="btn btn-primary capitalize btn-sm">Proceed to checkout</button>
+         <button className="btn border-none capitalize btn-sm text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 hover:from-purple-600 hover:via-purple-700 hover:to-purple-600 focus:from-gray-200 focus:via-gray-400 focus:to-gray-200 hover:text-white">Proceed to checkout</button>
         </div>
        </div>
       </div>

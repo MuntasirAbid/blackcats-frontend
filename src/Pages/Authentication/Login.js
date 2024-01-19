@@ -77,7 +77,7 @@ const Login = () => {
     }
 
     return (
-        <div className='grid lg:grid-cols-2 pt-10 '>
+        <div className='grid lg:grid-cols-2 md:mt-10 lg:mt-10 '>
 
             <div className='  lg:my-auto lg:p-12 p-10 md:p-20'>
                 <h2 className='text-center text-3xl md:text-4xl font-bold pb-12 text-purple-300'>Log In to join Now !</h2>

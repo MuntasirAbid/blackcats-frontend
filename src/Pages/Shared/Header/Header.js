@@ -52,9 +52,6 @@ const Header = () => {
                 </div>
               </Link>
 
-              {/* <div className="form-control ">
-                <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
-              </div> */}
             </div>
 
 
@@ -145,7 +142,7 @@ const Header = () => {
                       <div className=''>
                         <p className='text-sm'>Hi <span className='text-lg'>{user.displayName}</span> </p>
                         <p>
-                          <li className=' text-black  rounded-lg p-1 text-xs bg-gradient-to-r from-emerald-500 to-lime-500 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-lime-600 hover:text-white'><Link onClick={handleLogOut}>Log Out</Link></li>
+                          <li className='rounded-lg p-1 text-xs text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 hover:from-purple-600 hover:via-purple-700 hover:to-purple-600  hover:text-white'><Link onClick={handleLogOut}>Log out</Link></li>
                         </p>
 
                       </div>
@@ -177,7 +174,7 @@ const Header = () => {
                       <div className=''>
                         <p className='text-sm'>Welcome</p>
                         <p>
-                          <Link to="/login">  <button className='w-full text-black  rounded-lg p-1 text-xs bg-gradient-to-r from-emerald-500 to-lime-500 hover:bg-gradient-to-r hover:from-emerald-600 hover:to-lime-600 hover:text-white'>Sign in</button> </Link>
+                          <Link to="/login">  <button className='w-full rounded-lg p-1 text-xs text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 hover:from-purple-600 hover:via-purple-700 hover:to-purple-600  hover:text-white'>Log in</button> </Link>
                         </p>
 
                       </div>

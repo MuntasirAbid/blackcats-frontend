@@ -17,7 +17,7 @@ const Sidebar = () => {
         <div className='lg:bg-white md:bg-gray-300 bg-gray-300 rounded-sm'>
             {/* Branding & Profile Info */}
             <div className=''>
-                <h2 className='text-3xl cursor-pointer font-semibold text-center text-red-800 '>
+                <h2 className='text-3xl cursor-pointer font-semibold text-center text-purple-800 '>
                     <Link to='/'>Buy & Sell</Link>
                 </h2>
                 <div className='flex flex-col items-center mt-6 -mx-2'>
@@ -30,12 +30,12 @@ const Sidebar = () => {
                         />
                     </Link>
                     <Link to='/dashboard'>
-                        <h4 className='mx-2 mt-2 font-medium text-primary text-xl  hover:underline'>
+                        <h4 className='mx-2 mt-2 text-purple-600 font-semibold text-xl'>
                             {user?.displayName}
                         </h4>
                     </Link>
                     <Link to='/dashboard'>
-                        <p className='mx-2 mt-1 text-sm font-medium text-primary  hover:underline'>
+                        <p className='mx-2 mt-1 text-sm font-medium text-purple-600'>
                             {user?.email}
                         </p>
                     </Link>

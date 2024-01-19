@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 const BuyerNav = () => {
     return (
         <div>
-             <ul className="">
-                <li className=" font-semibold text-lg">
+            <ul className="">
+                <li className=" font-semibold text-lg text-purple-600">
                     <Link to="/dashboard/my-orders"><FaBookOpen></FaBookOpen> My Orders</Link>
                 </li>
-                
+
 
 
             </ul>

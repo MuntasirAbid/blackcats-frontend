@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Category from './Category';
 import BigLoading from '../../../Components/Loading/BigLoading';
 
+
 const Categories = () => {
     const [categories, setCategories] = useState([])
     const [loading, setLoading] = useState(true);
@@ -26,7 +27,7 @@ const Categories = () => {
 
     return (
         <div>
-            <h2 className='text-purple-300 text-4xl font-semibold text-center my-16'>Choose your category</h2>
+            <h2 className='text-purple-300 text-md md:text-4xl lg:text-4xl  font-semibold text-center my-8 md:my-16 lg:my16'>Choose your category</h2>
             <div className='grid grid-cols-1  lg:grid-cols-3 gap-10'>
                 {
 
