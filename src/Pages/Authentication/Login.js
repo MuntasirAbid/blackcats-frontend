@@ -81,7 +81,7 @@ const Login = () => {
     return (
         <div className='grid lg:grid-cols-2 md:mt-5 lg:mt-0 '>
 
-            <div className='  lg:my-auto lg:p-12 p-10 md:p-20'>
+            <div className='  lg:my-auto lg:p-12 p-10 md:p-20 '>
                 <h2 className='text-center text-3xl md:text-4xl font-bold pb-12 text-purple-300'>Log In to join Now !</h2>
                 <form onSubmit={handleSubmit} className='bg-white shadow-lg rounded-2xl p-4 md:p-20'>
 
@@ -118,7 +118,7 @@ const Login = () => {
 
 
                 <div className="my-2 flex items-center justify-center">
-                    <div className="bg-gradient-to-r from-purple-400 via-purple-600 h-1 w-16 md:w-40 lg:w-64"></div>
+                    <div className="bg-gradient-to-r from-purple-400 via-purple-600 h-1 w-10 md:w-40 lg:w-64"></div>
                     <div className='divider text-sm text-purple-500 px-4'>New To Black Cats?</div>
                     <div className="bg-gradient-to-l from-purple-400 via-purple-600 h-1 w-16 md:w-40 lg:w-64"></div>
                 </div>
@@ -132,8 +132,8 @@ const Login = () => {
                 </Link>
             </div>
 
-            <div className='hidden lg:flex items-center justify-center '>
-                <img className='rounded' src={loginImg} alt="" />
+            <div className=' hidden  lg:flex  items-center justify-center  '>
+                <img className='rounded w-[720px] h-[405px]' src={loginImg} alt="" />
             </div>
 
 

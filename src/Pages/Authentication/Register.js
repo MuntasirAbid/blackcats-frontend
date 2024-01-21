@@ -6,6 +6,7 @@ import useToken from '../../Hooks/useToken';
 import toast from 'react-hot-toast';
 import SmallSpinner from '../../Components/Loading/SmallLoading';
 import PrimaryButton from '../../Components/button/ButtonPrimary';
+import registerImage from "../../assets/registerImg.jpeg"
 
 const Register = () => {
     const { user, createUser, updateUser, loading, setLoading, googleLogin } = useContext(AuthContext)
@@ -116,34 +117,34 @@ const Register = () => {
     }
 
     return (
-        <div className='lg:w-1/2 mx-auto'>
+        <div className='grid lg:grid-cols-2 md:mt-5 lg:mt-0'>
 
-            <div className='lg:my-auto lg:p-12 p-10 md:p-20 '>
+            <div className=' lg:my-auto lg:px-5 p-10 md:p-5  '>
                 <h2 className='text-center text-3xl md:text-4xl font-bold pb-10 text-purple-300 '>Register!</h2>
-                <form onSubmit={handleSubmit} className='bg-gray-300 shadow-lg rounded-2xl p-4 lg:p-16 md:p-16'>
+                <form onSubmit={handleSubmit} className='bg-gray-300 shadow-lg rounded-2xl p-4 lg:p-5 md:p-16'>
 
-                    <div className="mb-6">
-                        <label htmlFor="name" className="block mb-2 text-purple-400 font-bold">Your Full Name</label>
-                        <input type="text" name="name" className="input border-2 placeholder-white bg-stone-500 caret-white text-black focus:border-purple-300 w-full text-sm" placeholder="Name" required />
+                    <div className="mb-1">
+                        <label htmlFor="name" className="block mb-1 text-purple-400 font-semibold">Your Full Name</label>
+                        <input type="text" name="name" className="input input-sm border-2 placeholder-white bg-stone-500 caret-white text-black focus:border-purple-300 w-full text-sm" placeholder="Name" required />
                     </div>
-                    <div className="mb-6">
+                    <div className="mb-1">
                         <label htmlFor="email" className="block mb-2  font-medium text-purple-400">Your E-mail</label>
-                        <input type="email" name="email" className="input border-2 placeholder-white bg-stone-500 caret-white text-black focus:border-purple-300 w-full text-sm" placeholder="E-mail" required />
+                        <input type="email" name="email" className="input input-sm border-2 placeholder-white bg-stone-500 caret-white text-black focus:border-purple-300 w-full text-sm" placeholder="E-mail" required />
                     </div>
-                    <div className="mb-6">
-                        <label htmlFor="photo" className="block mb-2  font-medium text-purple-400">Your PhotoURL</label>
-                        <input type="file" name="photo" className="file-input file-input-bordered w-full max-w-xs" required />
+                    <div className="mb-1">
+                        <label htmlFor="photo" className="block mb-2  font-semibold text-purple-400">Your PhotoURL</label>
+                        <input name="photo" type="file" class="block w-full text-xs text-slate-500" required />
                     </div>
-                    <div className="mb-6">
-                        <label htmlFor="password" className="block mb-2  font-medium text-purple-400">Your password</label>
-                        <input type="password" name="password" className="input border-2 placeholder-white bg-stone-500 caret-white text-black focus:border-purple-300 w-full text-sm" placeholder="Password" required />
+                    <div className="mb-1">
+                        <label htmlFor="password" className="block mb-1  font-medium text-purple-400">Your password</label>
+                        <input type="password" name="password" className="input input-sm border-2 placeholder-white bg-stone-500 caret-white text-black focus:border-purple-300 w-full text-sm" placeholder="Password" required />
                     </div>
 
-                    <select name='role' className="select select-bordered w-full max-w-xs mb-6 text-white bg-stone-500">
-
+                    <select name='role' className="select select-sm  w-full max-w-xs py-1 text-white text-sm bg-stone-500">
                         <option onClick={(e) => setSaveAs(e.value)}>Buyer</option>
                         <option onClick={(e) => { setSaveAs(e.value) }}>Seller</option>
                     </select>
+
                     <div className='flex gap-3 my-5'>
                         <input type="radio" name="radio-1" className="radio" />
                         <p>Accept rules</p>
@@ -168,6 +169,11 @@ const Register = () => {
                     <p className='text-center my-2'><span>Already Have An Account ?</span> <Link className='text-orange-400' to="/login">Log In</Link></p>
                 </form>
             </div>
+
+            <div className='hidden lg:flex items-center justify-center mt-16 '>
+                <img className='rounded w-[720px] h-[450px]' src={registerImage} alt="" />
+            </div>
+
         </div>
     );
 };
