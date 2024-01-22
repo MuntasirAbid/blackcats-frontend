@@ -49,7 +49,7 @@ const MyOrders = () => {
                     <tbody>
 
                         {
-                            myBookings.map((myBooking, i) => <tr key={myBooking._id}>
+                            myBookings.length && myBookings?.map((myBooking, i) => <tr key={myBooking._id}>
                                 <th>
                                     {i + 1}
                                 </th>
@@ -60,7 +60,7 @@ const MyOrders = () => {
                                                 <img src={myBooking.img} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
-                                        <div className="font-bold">{myBooking.book}</div>
+                                        <div className="font-bold">{`${myBooking.book.slice(0, 60)}...`}</div>
                                     </div>
                                 </td>
                                 <td>{myBooking.price}</td>

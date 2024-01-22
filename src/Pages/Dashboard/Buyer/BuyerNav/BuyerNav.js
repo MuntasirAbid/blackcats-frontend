@@ -6,7 +6,7 @@ const BuyerNav = () => {
     return (
         <div>
             <ul className="">
-                <li className=" font-semibold text-lg text-purple-600">
+                <li className=" font-semibold text-lg hover:text-purple-700">
                     <Link to="/dashboard/my-orders"><FaBookOpen></FaBookOpen> My Orders</Link>
                 </li>
 

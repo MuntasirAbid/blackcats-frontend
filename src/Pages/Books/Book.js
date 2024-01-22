@@ -16,7 +16,7 @@ const Book = ({ book }) => {
 
         <Link to={`/product/${_id}`}>
 
-            <div className="card  bg-base-100 drop-shadow-md max-w-[232px] max-h-[513px]">
+            <div className="card  my-10 bg-base-100 drop-shadow-md max-w-[232px] max-h-[513px] transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-95 duration-200 ">
                 <figure className="">
                     <img src={img} alt="" className=" w-[230px] h-[230px] " />
                 </figure>

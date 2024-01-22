@@ -2,6 +2,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import AdvertiseItem from './AdvertiseItem';
 
+import BigLoading from '../../../Components/Loading/BigLoading';
+
 const AdvertiseItems = () => {
 
     const [advertiseItems, setAdvertiseItems] = useState([])
@@ -10,6 +12,7 @@ const AdvertiseItems = () => {
     const [size, setSize] = useState(8);
     const [search, setSearch] = useState('')
     const searchRef = useRef();
+    const [loading, setLoading] = useState(true)
 
     // const collectionRef = useRef(null);
 
@@ -20,7 +23,7 @@ const AdvertiseItems = () => {
             .then(data => {
                 setCount(data.count)
                 setAdvertiseItems(data.advertiseItems);
-
+                setLoading(false)
 
             })
     }, [page, size, search])
@@ -30,6 +33,10 @@ const AdvertiseItems = () => {
     }
 
     const pages = Math.ceil(count / size);
+
+    if (loading) {
+        <BigLoading></BigLoading>
+    }
 
     if (advertiseItems) {
 

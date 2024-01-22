@@ -13,21 +13,6 @@ const CheckoutForm = ({ booking }) => {
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState("");
 
-
-    useEffect(() => {
-        // Create PaymentIntent as soon as the page loads
-        fetch("https://buy-sell-store-backend.vercel.app/create-payment-intent", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                authorization: `bearer ${localStorage.getItem('bookToken')}`
-            },
-            body: JSON.stringify({ price }),
-        })
-            .then((res) => res.json())
-            .then((data) => setClientSecret(data.clientSecret));
-    }, [price]);
-
     const stripe = useStripe();
     const elements = useElements();
 
@@ -132,7 +117,11 @@ const CheckoutForm = ({ booking }) => {
     return (
         <div className='mr-10'>
             <form onSubmit={handleSubmit}>
+
+
                 <CardElement className='shadow-xl p-10 rounded-md'
+
+
                     options={{
                         style: {
                             base: {

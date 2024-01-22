@@ -4,19 +4,21 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
-import { useLoaderData, useNavigation } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigation } from 'react-router-dom';
 import BigLoading from '../../../../Components/Loading/BigLoading'
 import CheckoutForm from './CheckoutForm';
+
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 
 const Payment = () => {
     const booking = useLoaderData();
-    console.log(stripePromise)
-    console.log(booking)
+
 
     const { price, book, img, buyerName, buyerEmail, location, sellerName } = booking;
+
+
 
     return (
         <div className='text-center mt-16 p-2'>

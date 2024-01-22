@@ -23,6 +23,7 @@ import ContactUs from "../Pages/HomePage/ContactUs/ContactUs";
 import ProductDetails from "../Pages/Books/ProductDetails";
 import Cart from "../Pages/Books/Cart/Cart";
 import AdvertiseItems from "../Pages/HomePage/AdvertiseItems/AdvertiseItems";
+import PaymentCartItems from "../Pages/Dashboard/Buyer/Payment/PaymentCartItems";
 
 export const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
             {
                 path: "/cart",
                 element: <Cart></Cart>
+            },
+            {
+                path: "/cartItemsPayments",
+                element: <PaymentCartItems></PaymentCartItems>
             },
             {
                 path: "/advertiseItems",

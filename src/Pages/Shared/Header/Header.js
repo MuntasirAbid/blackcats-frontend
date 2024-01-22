@@ -32,7 +32,7 @@ const Header = () => {
 
   return (
     <nav className='w-full bg-black ' >
-      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+      <div className="  justify-between px-4 mx-auto lg:max-w-full md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
 
@@ -141,9 +141,9 @@ const Header = () => {
                       </div>
                       <div className=''>
                         <p className='text-sm'>Hi <span className='text-lg'>{user.displayName}</span> </p>
-                        <p>
-                          <li className='rounded-lg p-1 text-xs text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 hover:from-purple-600 hover:via-purple-700 hover:to-purple-600  hover:text-white'><Link onClick={handleLogOut}>Log out</Link></li>
-                        </p>
+
+                        <Link onClick={handleLogOut}>
+                          <span className='rounded-lg p-1 text-xs text-center text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 hover:from-purple-600 hover:via-purple-700 hover:to-purple-600  hover:text-white'>Log out</span></Link>
 
                       </div>
 
@@ -173,10 +173,11 @@ const Header = () => {
                       </div>
                       <div className=''>
                         <p className='text-sm'>Welcome</p>
-                        <p>
-                          <Link to="/login">  <button className='w-full rounded-lg p-1 text-xs text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 hover:from-purple-600 hover:via-purple-700 hover:to-purple-600  hover:text-white'>Log in</button> </Link>
-                        </p>
-
+                        <div>
+                          <p>
+                            <Link to="/login">  <button className='w-full rounded-lg p-1 text-xs text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 hover:from-purple-600 hover:via-purple-700 hover:to-purple-600  hover:text-white'>Log in</button> </Link>
+                          </p>
+                        </div>
                       </div>
 
                     </div>

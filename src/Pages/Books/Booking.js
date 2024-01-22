@@ -1,9 +1,13 @@
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+
 
 const Booking = ({ book, setModalBook }) => {
     const { user } = useContext(AuthContext)
+
+    const navigate = useNavigate()
 
     const { name, author, img, originalPrice, resalePrice, status, location, post, sellerName, summery, yearOfUse, yearOfPurchase, sellerEmail } = book
 
@@ -51,7 +55,8 @@ const Booking = ({ book, setModalBook }) => {
             .then(data => {
                 console.log(data)
                 setModalBook(null)
-                toast.success("Booking Successful!")
+                toast.success("Booking Successful! Please go to your order to pay for the product")
+                navigate("/dashboard")
             })
         console.log(booking);
     }

@@ -50,11 +50,8 @@ const ProductSection = ({ productDetails, setModalBook }) => {
 
   window.location.reload()
 
-  console.log(existingCartItems);
 
  };
-
-
 
  const { name, status, summery, resalePrice, originalPrice, yearOfPurchase, yearOfUse, sellerEmail, sellerName, sellerPhone, img, location, genre, post } = productDetails
 

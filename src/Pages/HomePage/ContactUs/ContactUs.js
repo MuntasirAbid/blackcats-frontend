@@ -3,6 +3,7 @@ import emailjs from '@emailjs/browser';
 import { useRef } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import contactImg from "../../../../src/assets/MicrosoftTeams-image.png"
+import { GrContact } from "react-icons/gr";
 
 const ContactUs = () => {
 
@@ -25,10 +26,13 @@ const ContactUs = () => {
  };
 
  return (
-  <div>
+  <div className='h-full'>
 
    <section id="contact">
-    <h1 className="normal-case font-serif text-purple-600 text-3xl ml-10 mt-10">Contact Us</h1>
+    <div className='flex'>
+     <h1 className="normal-case font-serif text-purple-400 text-3xl ml-10 mt-10">Contact Us</h1>
+     <div className='text-3xl ml-4 mt-11'><GrContact className='text-purple-400' ></GrContact></div>
+    </div>
 
 
     <div className="flex px-8">
