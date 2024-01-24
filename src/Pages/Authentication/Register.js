@@ -101,7 +101,7 @@ const Register = () => {
 
     const saveUser = (name, email, photo, role) => {
         const user = { name, email, photo, role }
-        fetch("https://buy-sell-store-backend.vercel.app/users", {
+        fetch("http://localhost:10000/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

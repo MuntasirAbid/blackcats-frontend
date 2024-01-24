@@ -1,4 +1,4 @@
-live link:-> https://resale-shop-client.web.app/
+live link:-> https://blackcats-team.web.app/
 
 
 features we have :
@@ -11,6 +11,6 @@ features we have :
 * buyer can pay through stripe
 * I have used tailwind,daisyui,useQuery.
 
-adminEmail: abid@gmail.com
+adminEmail: muntasir@gmail.com
 
 adminPassword: AA1122

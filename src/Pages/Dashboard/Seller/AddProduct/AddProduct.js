@@ -9,7 +9,7 @@ const AddProduct = () => {
     const navigate = useNavigate()
     const { data: categories = [] } = useQuery({
         queryKey: ['categories'],
-        queryFn: () => fetch('https://buy-sell-store-backend.vercel.app/bookGenre')
+        queryFn: () => fetch('http://localhost:10000/bookGenre')
             .then(res => res.json())
     })
     const [quantity, setQuantity] = useState('');
@@ -99,7 +99,7 @@ const AddProduct = () => {
                 console.log(data)
                 const img = data?.data?.display_url;
                 const product = { name, status, summery, resalePrice, originalPrice, yearOfPurchase, yearOfUse, sellerEmail, sellerName, sellerPhone, productQuantity, img, condition, location, genre }
-                fetch('https://buy-sell-store-backend.vercel.app/products', {
+                fetch('http://localhost:10000/products', {
                     method: "POST",
                     headers: {
                         "content-type": "application/json",
