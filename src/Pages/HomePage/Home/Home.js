@@ -10,7 +10,7 @@ import Slider from '../Carousel/Carousel';
 const Home = () => {
     const { data: books = [] } = useQuery({
         queryKey: ['books'],
-        queryFn: () => fetch('http://localhost:10000/productsAd')
+        queryFn: () => fetch('https://buy-sell-store-backend.vercel.app/productsAd')
             .then(res => res.json())
     })
     if (books.length <= 0) {

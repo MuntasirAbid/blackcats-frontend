@@ -18,7 +18,7 @@ const CheckoutForm = ({ booking }) => {
 
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
-        fetch("http://localhost:10000/create-payment-intent", {
+        fetch("https://buy-sell-store-backend.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -92,7 +92,7 @@ const CheckoutForm = ({ booking }) => {
                 sellerEmail: sellerEmail,
                 bookingId: booking._id
             }
-            fetch('http://localhost:10000/payments', {
+            fetch('https://buy-sell-store-backend.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

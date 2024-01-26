@@ -24,7 +24,7 @@ const CartCheckoutForm = ({ cartInfo }) => {
 
  // useEffect(() => {
  //  // Create PaymentIntent as soon as the page loads
- //  fetch("http://localhost:10000/create-payment-intent", {
+ //  fetch("https://buy-sell-store-backend.vercel.app/create-payment-intent", {
  //   method: "POST",
  //   headers: {
  //    "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const CartCheckoutForm = ({ cartInfo }) => {
 
 
  //   }
- //   fetch('http://localhost:10000/payments', {
+ //   fetch('https://buy-sell-store-backend.vercel.app/payments', {
  //    method: 'POST',
  //    headers: {
  //     'content-type': 'application/json',

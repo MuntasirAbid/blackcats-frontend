@@ -43,7 +43,7 @@ const Booking = ({ book, setModalBook }) => {
         const booking = { location, sellerName, phone, quantity, img, status, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: totalPrice }
 
 
-        fetch("http://localhost:10000/bookings", {
+        fetch("https://buy-sell-store-backend.vercel.app/bookings", {
             method: "POST",
             headers: {
                 "content-type": "application/json",

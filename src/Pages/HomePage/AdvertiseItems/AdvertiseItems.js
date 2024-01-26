@@ -17,7 +17,7 @@ const AdvertiseItems = () => {
     // const collectionRef = useRef(null);
 
     useEffect(() => {
-        const url = `http://localhost:10000/advertiseProducts?search=${search}&page=${page}&size=${size}`;
+        const url = `https://buy-sell-store-backend.vercel.app/advertiseProducts?search=${search}&page=${page}&size=${size}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
