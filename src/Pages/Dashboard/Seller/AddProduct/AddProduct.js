@@ -3,6 +3,9 @@ import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Contexts/AuthProvider';
+import PrimaryButton from '../../../../Components/button/ButtonPrimary';
+import SmallSpinner from '../../../../Components/Loading/SmallLoading';
+import BigLoading from '../../../../Components/Loading/BigLoading';
 
 const AddProduct = () => {
     const { user } = useContext(AuthContext)
@@ -11,6 +14,7 @@ const AddProduct = () => {
         queryKey: ['categories'],
         queryFn: () => fetch('https://buy-sell-store-backend.vercel.app/bookGenre')
             .then(res => res.json())
+
     })
     const [quantity, setQuantity] = useState('');
     const [yearOfPurchase, setYearOfPurchase] = useState('');
@@ -19,6 +23,7 @@ const AddProduct = () => {
     const [yearOfUse, setYearOfUse] = useState('');
     const [yearOfUseError, setYearOfUseError] = useState('');
     const [formValid, setFormValid] = useState(true);
+    const [loading, setLoading] = useState(false)
 
 
     const handleQuantityChange = (event) => {
@@ -63,10 +68,8 @@ const AddProduct = () => {
         }
     };
 
-
-
-
     const handleSubmit = (e) => {
+        setLoading(true)
         e.preventDefault()
         const form = e.target;
         const name = form.product.value;
@@ -89,7 +92,7 @@ const AddProduct = () => {
         formData.append('image', image)
 
         const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMG}`
-        console.log(process.env.REACT_APP_IMG)
+
         fetch(url, {
             method: "POST",
             body: formData
@@ -113,16 +116,25 @@ const AddProduct = () => {
                         if (data.acknowledged) {
                             toast.success("Added Successfully! Please press the Advertise button to show the product in our Collections")
                             navigate('/dashboard/myproduct')
+                            setLoading(false)
                         }
                     })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        toast.error("An error occurred while adding the product");
+                        setLoading(false);
+                    });
             })
+            .catch(error => {
+                console.error('Error:', error);
+                toast.error("An error occurred while uploading the image");
+                setLoading(false);
+            });
 
     }
 
-    // console.log(process.env.REACT_APP_IMG)
     return (
         <div>
-
             <h2 className='text-4xl font-semibold my-10 text-center'>Add A Product</h2>
             <form onSubmit={handleSubmit} className='md:w-1/2 mx-auto my-10 px-5 md:p-10 rounded-3xl shadow-md'>
                 <div className=''>
@@ -261,8 +273,16 @@ const AddProduct = () => {
                 </div>
 
 
-                <div className='flex justify-center  my-10'>
-                    <button type="submit" disabled={!formValid} className='btn px-24 '>Add Product</button>
+                <div >
+
+                    <PrimaryButton
+                        type='submit'
+                        classes='w-full mt-6 px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100 transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 duration-200 ... '
+
+                    >
+                        {loading ? <SmallSpinner></SmallSpinner> : 'Add Product'}
+                    </PrimaryButton>
+
                 </div>
             </form>
         </div>
