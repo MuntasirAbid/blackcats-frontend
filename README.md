@@ -11,6 +11,3 @@ features we have :
 * buyer can pay through stripe
 * I have used tailwind,daisyui,useQuery.
 
-adminEmail: muntasir@gmail.com
-
-adminPassword: AA1122
