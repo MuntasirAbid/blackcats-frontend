@@ -6,7 +6,7 @@ import NoElements from '../../NoElements/NoElements';
 const AllBuyers = () => {
     const { data: buyers = [], refetch, isLoading } = useQuery({
         queryKey: ['buyers'],
-        queryFn: () => fetch('https://buy-sell-store-backend.vercel.app/buyers', {
+        queryFn: () => fetch('http://localhost:10000/buyers', {
             headers: {
 
                 authorization: `bearer ${localStorage.getItem("bookToken")}`
@@ -19,7 +19,7 @@ const AllBuyers = () => {
 
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`https://buy-sell-store-backend.vercel.app/buyers/${id}`, {
+        fetch(`http://localhost:10000/buyers/${id}`, {
             method: "DELETE",
             headers: {
 

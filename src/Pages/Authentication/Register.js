@@ -2,27 +2,27 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
-import useToken from '../../Hooks/useToken';
 import toast from 'react-hot-toast';
 import SmallSpinner from '../../Components/Loading/SmallLoading';
 import PrimaryButton from '../../Components/button/ButtonPrimary';
 import registerImage from "../../assets/registerImg.jpeg"
 
 const Register = () => {
-    const { user, createUser, updateUser, loading, setLoading, googleLogin } = useContext(AuthContext)
+    const { createUser, updateUser, loading, setLoading, googleLogin } = useContext(AuthContext)
     const [saveAs, setSaveAs] = useState('Buyer')
-    const [createEmail, setCreateEmail] = useState('')
-    const [token] = useToken(createEmail)
-
 
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
+    // useEffect(() => {
+    //     if (token) {
+    //         // Token received, set it in localStorage
 
-    if (token) {
-        navigate('/')
-    }
+    //         navigate('/');
+    //     }
+    // }, [token, navigate]);
+
     // handle submit
 
     const handleSubmit = (e) => {
@@ -34,7 +34,6 @@ const Register = () => {
         const photof = form.photo.files[0];
         const password = form.password.value;
         const role = form.role.value;
-        console.log(name, email, photof, password, role)
 
         const formData = new FormData()
         formData.append('image', photof)
@@ -54,6 +53,7 @@ const Register = () => {
                 createUser(email, password)
                     .then(res => {
                         const user = res.user;
+                        // setAuthToken(user)
                         console.log(user)
                         setSaveAs('Buyer')
                         // update user
@@ -65,18 +65,17 @@ const Register = () => {
                             .then(() => {
                                 toast.success('Welcome to Black Cats! Enjoy shopping')
                                 saveUser(name, email, photo, role)
+
                                 setLoading(false)
                                 navigate(from, { replace: true })
                             })
                             .catch(er => console.error(er))
-
                     })
                     .catch(er => {
                         toast.error(er.message)
                         console.log(er)
                         setLoading(false)
                     })
-
 
             })
             .catch(er => console.error(er))
@@ -97,22 +96,20 @@ const Register = () => {
     }
 
 
-
-
     const saveUser = (name, email, photo, role) => {
         const user = { name, email, photo, role }
-        fetch("https://buy-sell-store-backend.vercel.app/users", {
+        fetch("http://localhost:10000/users", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
-                authorization: `bearer ${localStorage.getItem("bookToken")}`
+
             },
             body: JSON.stringify(user)
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
-                setCreateEmail(email)
+                localStorage.setItem('bookToken', data.token)
             })
     }
 
@@ -153,7 +150,7 @@ const Register = () => {
                     <div>
                         <PrimaryButton
                             type='submit'
-                            classes='w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100 transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-110 duration-200 ... '
+                            classes='w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100 transition ease-in-out delay-0 hover:-translate-y-1 hover:scale-100 duration-200 ... '
                         >
                             {loading ? <SmallSpinner></SmallSpinner> : 'Register'}
                         </PrimaryButton>
@@ -166,7 +163,7 @@ const Register = () => {
 
 
                     </div>
-                    <p className='text-center my-2'><span>Already Have An Account ?</span> <Link className='text-orange-400' to="/login">Log In</Link></p>
+                    <p className='text-center my-2'><span>Already Have An Account ?</span> <Link className='text-orange-500 hover:underline' to="/login">Log In</Link></p>
                 </form>
             </div>
 
