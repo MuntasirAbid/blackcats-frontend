@@ -3,7 +3,7 @@ import React from 'react';
 import { GiBookshelf } from "react-icons/gi";
 const AboutUs = () => {
     return (
-        <div className='text-center my-36 shadow-lg rounded-xl md:p-20 p-5 w-full bg-purple-800 text-slate-700'>
+        <div className='text-center my-36 shadow-lg rounded-xl md:p-20 p-5 w-full bg-green-800 text-slate-700'>
             <div className='flex items-center justify-center'>
 
                 <GiBookshelf className="w-32 h-32  text-white"></GiBookshelf>

@@ -82,7 +82,7 @@ const Cart = () => {
    {cartItems.length > 0 ?
     <div className=' text-center py-8 font-bold text-xl bg-gray-100 rounded-lg shadow-md'>
      <h1>Shopping Cart({cartItems.length})</h1>
-    </div> : <div className=' flex justify-center  py-8 font-bold text-xl text-white '>Your cart is empty, Back to <IoReturnDownForward className='mt-1 mx-2 text-2xl' />  <Link to="/advertiseItems"><span className=' font-serif btn  normal-case text-xl flex  bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 hover:from-purple-600 hover:via-purple-700 hover:to-purple-600'> <RiShoppingBag3Fill className='text-2xl' />Shopping</span></Link></div>}
+    </div> : <div className=' flex justify-center  py-8 font-bold text-xl text-white '>Your cart is empty, Back to <IoReturnDownForward className='mt-1 mx-2 text-2xl' />  <Link to="/advertiseItems"><span className=' font-serif btn  normal-case text-xl flex  bg-gradient-to-r from-green-500 via-green-600 to-green-500 hover:from-green-600 hover:via-green-700 hover:to-green-600'> <RiShoppingBag3Fill className='text-2xl' />Shopping</span></Link></div>}
    {cartItems.length > 0 && (
     <div className=' grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 place-content-center my-4 mx-8 '>
 
@@ -121,7 +121,7 @@ const Cart = () => {
         <p >Total Price: <span className='font-bold'> ${total} </span></p>
 
         <div className="card-actions justify-end">
-         <label htmlFor="products" className="btn btn-sm capitalize border-none text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 hover:from-purple-600 hover:via-purple-700 hover:to-purple-600 focus:from-gray-200 focus:via-gray-400 focus:to-gray-200 hover:text-white" onClick={handleProcessToCheckout} >Proceed to checkout</label>
+         <label htmlFor="products" className="btn btn-sm capitalize border-none text-white bg-gradient-to-r from-green-500 via-green-600 to-green-500 hover:from-green-600 hover:via-green-700 hover:to-green-600 focus:from-gray-200 focus:via-gray-400 focus:to-gray-200 hover:text-white" onClick={handleProcessToCheckout} >Proceed to checkout</label>
 
         </div>
        </div>

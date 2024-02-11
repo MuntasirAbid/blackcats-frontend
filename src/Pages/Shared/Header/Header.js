@@ -5,6 +5,7 @@ import { FaUserCircle } from 'react-icons/fa';
 import { BsCart4 } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
 import logo from '../../../assets/blackCat.jpeg'
+import "./Header.css"
 
 
 const Header = () => {
@@ -30,8 +31,31 @@ const Header = () => {
     setCartItemCount(cartItems);
   }, [location.pathname])
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+
+      // Calculate 80vh in pixels
+      const eightyVh = window.innerHeight * 0.8;
+
+      const isSmallDevice = window.innerWidth < 768;
+
+      if (!isSmallDevice && scrollTop > eightyVh) {
+        setNavbar(true);
+      } else {
+        setNavbar(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className='w-full bg-black ' >
+    <nav className={`w-full fixed top-0 left-0 z-[1000] ${navbar ? 'scrolled' : ''}`} >
       <div className="  justify-between px-4 mx-auto lg:max-w-full md:items-center md:flex md:px-8">
         <div>
           <div className="flex items-center justify-between py-3 md:py-5 md:block">
@@ -47,8 +71,8 @@ const Header = () => {
             <div className='flex '>
               <Link to="/">
                 <div className='flex items-center'>
-                  <img src={logo} className="w-12 rounded-full" alt="" />
-                  <h2 className='text-2xl ml-2 font-bold font-serif text-white  hover:text-purple-300'>BLACK CATS</h2>
+                  <img id="logo" src={logo} className="w-12 rounded-full " alt="" />
+                  <h2 className='text-2xl ml-2 font-bold font-serif text-white  hover:text-green-500'>BLACK CATS</h2>
                 </div>
               </Link>
 
@@ -101,17 +125,17 @@ const Header = () => {
               }`}
           >
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
-              <li className="text-white font-semibold text-lg hover:text-purple-300">
+              <li className="text-white font-semibold text-lg hover:text-green-500">
                 <Link to="/">Home</Link>
               </li>
-              <li className="text-white font-semibold text-lg hover:text-purple-300">
+              <li className="text-white font-semibold text-lg hover:text-green-500">
                 <Link to="/blog">FAQ</Link>
               </li>
-              <li className="text-white font-semibold text-lg hover:text-purple-300">
+              <li className="text-white font-semibold text-lg hover:text-green-500">
                 <Link to="/contactUs">Contact Us</Link>
               </li>
               <Link to="/cart">
-                <li className="text-white font-semibold text-lg hover:text-purple-300 flex hover:cursor-pointer">
+                <li className="text-white font-semibold text-lg hover:text-green-500 flex hover:cursor-pointer">
                   <div className='mt-4'>
 
                     <BsCart4 className='h-8 w-8' />
@@ -119,10 +143,10 @@ const Header = () => {
 
                   <div className='mb-4'>
                     {cartItemCount.length > 0 ? (
-                      <span className="bg-purple-900 rounded-full text-white text-xs px-2 py-1 ml-1">
+                      <span className="bg-green-900 rounded-full text-white text-xs px-2 py-1 ml-1">
                         {cartItemCount.length}
                       </span>
-                    ) : <span className="bg-purple-900 rounded-full text-white text-xs px-2 py-1 ml-1">
+                    ) : <span className="bg-green-900 rounded-full text-white text-xs px-2 py-1 ml-1">
                       0
                     </span>}
                     <div> Cart</div>
@@ -133,7 +157,7 @@ const Header = () => {
               {user?.uid ?
 
                 <>
-                  <li className='text-white font-semibold text-lg hover:text-purple-300 flex '>
+                  <li className='text-white font-semibold text-lg hover:text-green-500 flex '>
                     <div className='flex'>
 
                       <div className='mt-2 mr-1 '>
@@ -143,7 +167,7 @@ const Header = () => {
                         <p className='text-sm'>Hi <span className='text-lg'>{user.displayName}</span> </p>
 
                         <Link onClick={handleLogOut}>
-                          <span className='rounded-lg p-1 text-xs text-center text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 hover:from-purple-600 hover:via-purple-700 hover:to-purple-600  hover:text-white'>Log out</span></Link>
+                          <span className='rounded-lg p-1 text-xs text-center text-white bg-gradient-to-r from-green-500 via-green-600 to-green-500 hover:from-green-600 hover:via-green-700 hover:to-green-600  hover:text-white'>Log out</span></Link>
 
                       </div>
 
@@ -151,10 +175,10 @@ const Header = () => {
 
                   </li>
 
-                  <li className="text-white font-semibold text-lg hover:text-purple-300">
+                  <li className="text-white font-semibold text-lg hover:text-green-500">
                     <Link to='/dashboard' >Dashboard</Link>
                   </li>
-                  <li className="text-white font-semibold text-lg hover:text-purple-300">
+                  <li className="text-white font-semibold text-lg hover:text-green-500">
                     <Link >
                       <div className="tooltip tooltip-bottom" data-tip={user?.displayName ? user?.displayName : "User"}>
                         {user?.photoURL ?
@@ -165,7 +189,7 @@ const Header = () => {
                 </>
                 :
                 <>
-                  <li className='text-white font-semibold text-lg hover:text-purple-300 flex '>
+                  <li className='text-white font-semibold text-lg hover:text-green-500 flex '>
                     <div className='flex'>
 
                       <div className='mt-2 mr-1 '>
@@ -175,7 +199,7 @@ const Header = () => {
                         <p className='text-sm'>Welcome</p>
                         <div>
                           <p>
-                            <Link to="/login">  <button className='w-full rounded-lg p-1 text-xs text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 hover:from-purple-600 hover:via-purple-700 hover:to-purple-600  hover:text-white'>Log in</button> </Link>
+                            <Link to="/login">  <button className='w-full rounded-lg p-1 text-xs text-white bg-gradient-to-r from-green-500 via-green-600 to-green-500 hover:from-green-600 hover:via-green-700 hover:to-green-600  hover:text-white'>Log in</button> </Link>
                           </p>
                         </div>
                       </div>

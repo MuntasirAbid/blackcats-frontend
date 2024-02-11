@@ -9,14 +9,14 @@ const MyProducts = () => {
     const { user } = useContext(AuthContext)
     const { data: myProducts = [], refetch, isLoading } = useQuery({
         queryKey: ['myProducts'],
-        queryFn: () => fetch(`http://localhost:10000/products/${user?.email}`)
+        queryFn: () => fetch(`https://buy-sell-store-backend.vercel.app/products/${user?.email}`)
             .then(res => res.json())
     })
 
     // delete
     const handleDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:10000/products/${id}`, {
+        fetch(`https://buy-sell-store-backend.vercel.app/products/${id}`, {
             method: "DELETE",
             headers: {
 
@@ -32,7 +32,7 @@ const MyProducts = () => {
     // advertise
     const handleAdvertise = (id) => {
         console.log(id)
-        fetch(`http://localhost:10000/products/${id}`, {
+        fetch(`https://buy-sell-store-backend.vercel.app/products/${id}`, {
             method: "PUT",
             headers: {
 

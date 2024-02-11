@@ -9,7 +9,7 @@ const Categories = () => {
 
     useEffect(() => {
 
-        fetch('http://localhost:10000/categories')
+        fetch('https://buy-sell-store-backend.vercel.app/categories')
             .then(response => response.json())
             .then(data => {
                 setCategories(data)
@@ -27,7 +27,7 @@ const Categories = () => {
 
     return (
         <div>
-            <h2 className='text-purple-300 text-xl md:text-4xl lg:text-4xl  font-semibold text-center my-8 md:my-16 lg:my16'>Choose your category</h2>
+            <h2 className='text-green-500 text-xl md:text-4xl lg:text-4xl  font-semibold text-center my-8 md:my-12 lg:my16'>Choose your category</h2>
             <div className='grid grid-cols-1  lg:grid-cols-3 gap-10'>
                 {
 

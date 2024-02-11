@@ -4,12 +4,12 @@ import React from 'react';
 const Blog = () => {
 
     return (
-        <div className='mt-6 pb-56 w-5/6 mx-auto'>
+        <div className=' pt-8 w-5/6 mx-auto '>
             <div className='text-center'>
                 <div className="card bg-base-100 shadow-xl">
                     <div className="card-body">
 
-                        <h2 className="text-center font-bold text-4xl text-purple-900 mb-6"> FAQs</h2>
+                        <h2 className="text-center font-bold text-4xl text-green-900 mb-6"> FAQs</h2>
                         <div className='grid grid-cols-1'>
 
                             <h2 className='text-lg font-bold'>1- Is the website compatible with mobile devices?</h2>

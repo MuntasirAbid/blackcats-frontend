@@ -43,7 +43,7 @@ const Booking = ({ book, setModalBook }) => {
         const booking = { location, sellerName, phone, quantity, img, status, sellerEmail, buyerName, buyerEmail: user.email, book: name, price: totalPrice }
 
 
-        fetch("http://localhost:10000/bookings", {
+        fetch("https://buy-sell-store-backend.vercel.app/bookings", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -150,10 +150,10 @@ const Booking = ({ book, setModalBook }) => {
                                 </div>
                                 <div className='flex gap-5 justify-end'>
                                     <div className='flex justify-end my-2'>
-                                        <button type="submit" disabled={!formValid} className='btn bg-purple-300 text-black hover:bg-purple-400 border-none capitalize'>Buy</button>
+                                        <button type="submit" disabled={!formValid} className='btn bg-green-500 text-black hover:bg-green-600 border-none capitalize'>Buy</button>
                                     </div>
                                     <div className='flex justify-end my-2'>
-                                        <button onClick={handleCancel} className='btn bg-purple-300 text-black hover:bg-red-500 border-none capitalize'>Cancel</button>
+                                        <button onClick={handleCancel} className='btn bg-green-500 text-black hover:bg-red-500 border-none capitalize'>Cancel</button>
                                     </div>
                                 </div>
                             </form>

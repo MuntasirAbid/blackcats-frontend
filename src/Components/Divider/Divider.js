@@ -3,9 +3,9 @@ import React from 'react';
 const Divider = () => {
  return (
   <div>
-   
-   <hr className='mt-5 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-600' style={{ width: '37%', border: '1px solid #fff' }} />
-   
+
+   <hr className='mt-5 bg-gradient-to-r from-green-400 via-green-600 to-green-600' style={{ width: '37%', border: '1px solid #fff' }} />
+
   </div>
  );
 };

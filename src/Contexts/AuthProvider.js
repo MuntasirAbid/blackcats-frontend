@@ -27,17 +27,6 @@ const AuthProvider = ({ children }) => {
         return signOut(auth)
     }
 
-
-    // const updateUser = (name, email, photo, role) => {
-    //     setLoading(true)
-    //     return updateProfile(auth.currentUser, {
-    //         displayName: name,
-    //         photoURL: photo,
-    //         email: email,
-    //         role: role,
-    //     })
-    // }
-
     const updateUser = (profile) => {
         return updateProfile(auth.currentUser, profile)
     }

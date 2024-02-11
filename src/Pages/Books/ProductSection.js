@@ -86,8 +86,8 @@ const ProductSection = ({ productDetails, setModalBook }) => {
     </div>
 
     <div className="card-actions justify-end">
-     <label htmlFor="book" className="btn bg-purple-300  text-black hover:bg-purple-400 border-none capitalize" onClick={handleBuyNow}>Proceed to checkout</label>
-     <label htmlFor="book" className="btn bg-purple-300 text-black hover:bg-purple-400 border-none capitalize" onClick={handleAddToCart} >Add to Cart</label>
+     <label htmlFor="book" className="btn bg-green-500  text-black hover:bg-green-600 border-none capitalize" onClick={handleBuyNow}>Proceed to checkout</label>
+     <label htmlFor="book" className="btn bg-green-500 text-black hover:bg-green-600 border-none capitalize" onClick={handleAddToCart} >Add to Cart</label>
     </div>
    </div>
   </div>

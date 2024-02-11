@@ -5,20 +5,23 @@ import AdvertiseItems from '../AdvertiseItems/AdvertiseItems';
 import { useQuery } from '@tanstack/react-query';
 
 import Slider from '../Carousel/Carousel';
+import HomeBanner from '../HomeBanner/HomeBanner';
+import Header from '../../Shared/Header/Header';
 
 
 const Home = () => {
     const { data: books = [] } = useQuery({
         queryKey: ['books'],
-        queryFn: () => fetch('http://localhost:10000/productsAd')
+        queryFn: () => fetch('https://buy-sell-store-backend.vercel.app/productsAd')
             .then(res => res.json())
     })
     if (books.length <= 0) {
         return (
             <div>
-                <div className=''>
+                <div >
                     {/* carousel */}
-                    <Slider></Slider>
+                    <Header></Header>
+                    <Slider ></Slider>
                 </div>
                 <div className='mx-14  space-y-10'>
 
@@ -34,9 +37,11 @@ const Home = () => {
         <div>
             <div className=''>
                 {/* carousel */}
+                {/* <HomeBanner></HomeBanner> */}
+                <Header></Header>
                 <Slider></Slider>
             </div>
-            <div className='mx-14  space-y-10'>
+            <div className='mx-14  space-y-4'>
 
                 <Categories></Categories>
                 <AdvertiseItems></AdvertiseItems>

@@ -17,7 +17,7 @@ const AdvertiseItems = () => {
     // const collectionRef = useRef(null);
 
     useEffect(() => {
-        const url = `http://localhost:10000/advertiseProducts?search=${search}&page=${page}&size=${size}`;
+        const url = `https://buy-sell-store-backend.vercel.app/advertiseProducts?search=${search}&page=${page}&size=${size}`;
         fetch(url)
             .then(res => res.json())
             .then(data => {
@@ -42,7 +42,7 @@ const AdvertiseItems = () => {
 
         return (
             <div>
-                <h2 className='  text-purple-300 text-4xl font-semibold text-center my-16'>Our Collections</h2>
+                <h2 className='  text-green-500 text-4xl font-semibold text-center py-16'>Our Collections</h2>
                 <div className='grid place-items-center mb-20'>
 
                     <input className='input input-bordered input-sm' onChange={handleSearch} ref={searchRef} type="text" placeholder='Search here' />
@@ -60,7 +60,7 @@ const AdvertiseItems = () => {
                     {
                         [...Array(pages).keys()].map(number => <button
                             key={number}
-                            className={page === number ? 'mx-3 p-2 rounded-md bg-purple-300 text-black' : 'text-white hover:bg-slate-500 mx-3 p-2 rounded-md'}
+                            className={page === number ? 'mx-3 p-2 rounded-md bg-green-500 text-black' : 'text-white hover:bg-slate-500 mx-3 p-2 rounded-md'}
                             onClick={() => setPage(number)}
                         > {number + 1}
                         </button>)

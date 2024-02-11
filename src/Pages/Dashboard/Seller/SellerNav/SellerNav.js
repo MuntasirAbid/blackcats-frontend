@@ -8,13 +8,13 @@ const SellerNav = () => {
   return (
     <div>
       <ul className="">
-        <li className=" font-semibold text-lg hover:text-purple-700">
+        <li className=" font-semibold text-lg hover:text-green-700">
           <Link to="/dashboard/addproduct"><GiBookCover></GiBookCover>Add A Product</Link>
         </li>
-        <li className=" font-semibold text-lg hover:text-purple-700">
+        <li className=" font-semibold text-lg hover:text-green-700">
           <Link to="/dashboard/myproduct "><GiBookPile></GiBookPile>My Products</Link>
         </li>
-        <li className=" font-semibold text-lg hover:text-purple-700">
+        <li className=" font-semibold text-lg hover:text-green-700">
           <Link to="/dashboard/mybuyer"><FaUserAlt></FaUserAlt>My Buyers</Link>
         </li>
 

@@ -8,7 +8,7 @@ import app from '../../firebase.config';
 import loginImg from "../../../src/assets/MicrosoftTeams-image.png"
 import PrimaryButton from '../../Components/button/ButtonPrimary';
 import SmallSpinner from '../../Components/Loading/SmallLoading';
-import Divider from '../../Components/Divider/Divider';
+
 
 
 const auth = getAuth(app)
@@ -81,20 +81,20 @@ const Login = () => {
         <div className='grid lg:grid-cols-2 md:mt-5 lg:mt-0 '>
 
             <div className='  lg:my-auto lg:p-12 p-10 md:p-20 '>
-                <h2 className='text-center text-3xl md:text-4xl font-bold pb-12 text-purple-300'>Log In to join Now !</h2>
+                <h2 className='text-center text-3xl md:text-4xl font-bold pb-12 text-green-500'>Log In to join Now !</h2>
                 <form onSubmit={handleSubmit} className='bg-white shadow-lg rounded-2xl p-4 md:p-20'>
 
                     <div className="mb-6">
-                        <label htmlFor="email" className="block mb-2  font-medium text-purple-400">Your E-mail</label>
+                        <label htmlFor="email" className="block mb-2  font-medium text-green-400">Your E-mail</label>
                         <input
                             onBlur={handleEmailBlur}
-                            type="email" name="email" className="input border-2 placeholder-gray-200 bg-stone-500 caret-white text-black focus:border-purple-300 w-full text-sm" placeholder="E-mail" required="Email is required"
+                            type="email" name="email" className="input border-2 placeholder-gray-200 bg-stone-500 caret-white text-black focus:border-green-500 w-full text-sm" placeholder="E-mail" required="Email is required"
                         />
                     </div>
 
                     <div className="mb-2">
-                        <label htmlFor="password" className="block mb-2  font-medium text-purple-400">Your password</label>
-                        <input type="password" name="password" className="input border-2 placeholder-gray-200 bg-stone-500 caret-white text-black focus:border-purple-300 w-full text-sm" placeholder="Password" required="" />
+                        <label htmlFor="password" className="block mb-2  font-medium text-green-400">Your password</label>
+                        <input type="password" name="password" className="input border-2 placeholder-gray-200 bg-stone-500 caret-white text-black focus:border-green-500 w-full text-sm" placeholder="Password" required="" />
                     </div>
                     <p className='text-xl text-red-500 py-3'>{error}</p>
                     <div className='pb-2'>
@@ -117,15 +117,15 @@ const Login = () => {
 
 
                 <div className="my-2 flex items-center justify-center">
-                    <div className="bg-gradient-to-r from-purple-400 via-purple-600 h-1 w-10 md:w-40 lg:w-64"></div>
-                    <div className='divider text-sm text-purple-500 px-4'>New To Black Cats?</div>
-                    <div className="bg-gradient-to-l from-purple-400 via-purple-600 h-1 w-16 md:w-40 lg:w-64"></div>
+                    <div className="bg-gradient-to-r from-green-400 via-green-600 h-1 w-10 md:w-40 lg:w-64"></div>
+                    <div className='divider text-sm text-green-500 px-4'>New To Black Cats?</div>
+                    <div className="bg-gradient-to-l from-green-400 via-green-600 h-1 w-16 md:w-40 lg:w-64"></div>
                 </div>
 
 
 
                 <Link className='' to="/register">
-                    <div className='grid place-content-center rounded-lg shadow-md p-1 text-white bg-gradient-to-r from-purple-400 via-purple-600 to-purple-400 hover:from-purple-500 hover:via-purple-700 hover:to-purple-500 focus:from-gray-200 focus:via-gray-400 focus:to-gray-200 hover:text-gray-300 hover:cursor-pointer'>
+                    <div className='grid place-content-center rounded-lg shadow-md p-1 text-white bg-gradient-to-r from-green-400 via-green-600 to-green-400 hover:from-green-500 hover:via-green-700 hover:to-green-500 focus:from-gray-200 focus:via-gray-400 focus:to-gray-200 hover:text-gray-300 hover:cursor-pointer'>
                         <button>Create your Black Cats Account</button>
                     </div>
                 </Link>
